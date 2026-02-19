@@ -1,5 +1,5 @@
 ---
-name: workflows:compound
+name: kw:compound
 description: Extract and save learnings from a completed knowledge work session. Saves to docs/knowledge/ so future plans automatically find them.
 ---
 
@@ -117,7 +117,7 @@ source: [brief description of what triggered this]
 **Saved:**
 - docs/knowledge/{filename}.md
 
-**This learning will be surfaced by /workflows:plan** when future work touches:
+**This learning will be surfaced by /kw:plan** when future work touches:
 - [list the tags that would trigger retrieval]
 ```
 
@@ -133,4 +133,4 @@ source: [brief description of what triggered this]
 
 * **<span data-proof="authored" data-by="ai:claude">Confidence matters.</span>** <span data-proof="authored" data-by="ai:claude">Mark</span> <span data-proof="authored" data-by="ai:claude">`low`</span> <span data-proof="authored" data-by="ai:claude">if based on one data point. Mark</span> <span data-proof="authored" data-by="ai:claude">`high`</span> <span data-proof="authored" data-by="ai:claude">if verified across multiple sessions or with data.</span>
 
-* **<span data-proof="authored" data-by="ai:claude">Tags are for retrieval.</span>** <span data-proof="authored" data-by="ai:claude">Choose tags that</span> <span data-proof="authored" data-by="ai:claude">`/workflows:plan`'s grep search would match on. Think: "What future question would this answer?"</span>
+* **<span data-proof="authored" data-by="ai:claude">Tags are for retrieval.</span>** <span data-proof="authored" data-by="ai:claude">Choose tags that</span> <span data-proof="authored" data-by="ai:claude">`/kw:plan`'s grep search would match on. Think: "What future question would this answer?"</span>

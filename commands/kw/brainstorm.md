@@ -1,5 +1,5 @@
 ---
-name: workflows:brainstorm
+name: kw:brainstorm
 description: Brain dump and compile knowledge before structuring a plan. Use when starting any non-trivial knowledge work — after a meeting, when tackling a new problem, or when you need to pull together what you know before planning.
 ---
 
@@ -96,7 +96,7 @@ description: Brain dump and compile knowledge before structuring a plan. Use whe
 
 * **<span data-proof="authored" data-by="ai:claude">Previous work</span>** <span data-proof="authored" data-by="ai:claude">— grep for related topics in the codebase</span>
 
-* **<span data-proof="authored" data-by="ai:claude">Knowledge base</span>** <span data-proof="authored" data-by="ai:claude">—</span> <span data-proof="authored" data-by="ai:claude">`docs/knowledge/`</span> <span data-proof="authored" data-by="ai:claude">if it exists (from</span> <span data-proof="authored" data-by="ai:claude">`/workflows:compound`)</span>
+* **<span data-proof="authored" data-by="ai:claude">Knowledge base</span>** <span data-proof="authored" data-by="ai:claude">—</span> <span data-proof="authored" data-by="ai:claude">`docs/knowledge/`</span> <span data-proof="authored" data-by="ai:claude">if it exists (from</span> <span data-proof="authored" data-by="ai:claude">`/kw:compound`)</span>
 
 * **<span data-proof="authored" data-by="ai:claude">Web</span>** <span data-proof="authored" data-by="ai:claude">— search for frameworks, best practices, competitive examples</span>
 
@@ -151,14 +151,14 @@ description: Brain dump and compile knowledge before structuring a plan. Use whe
 
 **<span data-proof="authored" data-by="ai:claude">Options:</span>**
 
-1. **<span data-proof="authored" data-by="ai:claude">Run</span>** **<span data-proof="authored" data-by="ai:claude">`/workflows:plan`</span>** <span data-proof="authored" data-by="ai:claude">— Structure this into an actionable plan</span>
+1. **<span data-proof="authored" data-by="ai:claude">Run</span>** **<span data-proof="authored" data-by="ai:claude">`/kw:plan`</span>** <span data-proof="authored" data-by="ai:claude">— Structure this into an actionable plan</span>
 2. **<span data-proof="authored" data-by="ai:claude">Dig deeper</span>** <span data-proof="authored" data-by="ai:claude">— Research a specific theme or question further</span>
 3. **<span data-proof="authored" data-by="ai:claude">Save as-is</span>** <span data-proof="authored" data-by="ai:claude">— Write the brainstorm to a file for later</span>
 4. **<span data-proof="authored" data-by="ai:claude">Keep going</span>** <span data-proof="authored" data-by="ai:claude">— Add more context or refine the themes</span>
 
 <span data-proof="authored" data-by="ai:claude">If "Save as-is": write to</span> <span data-proof="authored" data-by="ai:claude">`plans/brainstorm-{descriptive-name}.md`</span>
 
-<span data-proof="authored" data-by="ai:claude">If "Run</span> <span data-proof="authored" data-by="ai:claude">`/workflows:plan`": pass the structured brainstorm as input context.</span>
+<span data-proof="authored" data-by="ai:claude">If "Run</span> <span data-proof="authored" data-by="ai:claude">`/kw:plan`": pass the structured brainstorm as input context.</span>
 
 ## <span data-proof="authored" data-by="ai:claude">Important Rules</span>
 

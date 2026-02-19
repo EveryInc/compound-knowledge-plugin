@@ -5,7 +5,7 @@
 ```
 compound-knowledge/
 ├── .claude-plugin/plugin.json    # Plugin manifest
-├── commands/workflows/           # 5 workflow commands
+├── commands/kw/           # 5 workflow commands
 ├── agents/review/                # Review agents
 ├── skills/                       # Topic skills (future)
 ├── README.md
@@ -16,11 +16,11 @@ compound-knowledge/
 
 ## <span data-proof="authored" data-by="ai:claude">Conventions</span>
 
-* <span data-proof="authored" data-by="ai:claude">Workflow commands live in</span> <span data-proof="authored" data-by="ai:claude">`commands/workflows/`</span>
+* <span data-proof="authored" data-by="ai:claude">Workflow commands live in</span> <span data-proof="authored" data-by="ai:claude">`commands/kw/`</span>
 
 * <span data-proof="authored" data-by="ai:claude">Each command has YAML frontmatter with</span> <span data-proof="authored" data-by="ai:claude">`name:`</span> <span data-proof="authored" data-by="ai:claude">and</span> <span data-proof="authored" data-by="ai:claude">`description:`</span>
 
-* <span data-proof="authored" data-by="ai:claude">Commands use</span> <span data-proof="authored" data-by="ai:claude">`workflows:`</span> <span data-proof="authored" data-by="ai:claude">prefix (e.g.,</span> <span data-proof="authored" data-by="ai:claude">`/workflows:brainstorm`)</span>
+* <span data-proof="authored" data-by="ai:claude">Commands use</span> <span data-proof="authored" data-by="ai:claude">`kw:`</span> <span data-proof="authored" data-by="ai:claude">prefix (e.g.,</span> <span data-proof="authored" data-by="ai:claude">`/kw:brainstorm`)</span>
 
 * <span data-proof="authored" data-by="ai:claude">Review agents live in</span> <span data-proof="authored" data-by="ai:claude">`agents/review/`</span>
 

@@ -1,5 +1,5 @@
 ---
-name: workflows:work
+name: kw:work
 description: Execute a knowledge work plan. Break it into tasks, do the work, and track what happened. Use after planning to actually produce the deliverables.
 ---
 
@@ -9,7 +9,7 @@ You have a plan. Now execute it. Break it into tasks, do them, track what happen
 
 ## When to Use
 
-* After `/workflows:plan` or `/workflows:review` — the plan is ready, time to execute
+* After `/kw:plan` or `/kw:review` — the plan is ready, time to execute
 
 * "Start working on this", "Execute the plan", "Let's do this"
 
@@ -137,19 +137,19 @@ Use AskUserQuestion:
 
 **Options:**
 
-1. **Run** **`/workflows:review`** — Quality check the outputs
-2. **Run** **`/workflows:compound`** — Save learnings from this session
+1. **Run** **`/kw:review`** — Quality check the outputs
+2. **Run** **`/kw:compound`** — Save learnings from this session
 3. **Continue working** — Pick up blocked tasks or add new ones
 4. **Ship it** — Done, move on
 
 ## Important Rules
 
-* **Produce, don't plan.** This is execution mode. If you find yourself writing another plan, you're in the wrong workflow. Use `/workflows:plan` for that.
+* **Produce, don't plan.** This is execution mode. If you find yourself writing another plan, you're in the wrong workflow. Use `/kw:plan` for that.
 
 * **Show your work.** After each task, show the actual output. Don't say "I would create a doc that..." — create the doc.
 
 * **Respect scope.** The plan defines what to do. If something isn't in the plan, ask before adding it. Scope creep is the enemy of finishing.
 
-* **Track everything.** The work log is how you know what happened. It also feeds `/workflows:compound` with concrete results to learn from.
+* **Track everything.** The work log is how you know what happened. It also feeds `/kw:compound` with concrete results to learn from.
 
 * **Ask for feedback often.** Knowledge work is subjective. Check in after each deliverable rather than producing everything and hoping it's right.

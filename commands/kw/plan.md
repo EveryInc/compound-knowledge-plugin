@@ -1,5 +1,5 @@
 ---
-name: workflows:plan
+name: kw:plan
 description: Research past work and structure a knowledge work plan. Use when starting strategy docs, campaign plans, content briefs, research synthesis, or operational playbooks.
 ---
 
@@ -52,7 +52,7 @@ Grep: [keywords from description] in plans/
 Grep: [keywords] in docs/knowledge/
 ```
 
-<span data-proof="authored" data-by="ai:claude">These are insights from past sessions saved by</span> <span data-proof="authored" data-by="ai:claude">`/workflows:compound`. They exist because someone thought they were worth remembering.</span>
+<span data-proof="authored" data-by="ai:claude">These are insights from past sessions saved by</span> <span data-proof="authored" data-by="ai:claude">`/kw:compound`. They exist because someone thought they were worth remembering.</span>
 
 **<span data-proof="authored" data-by="ai:claude">2c. Solutions and patterns</span>** <span data-proof="authored" data-by="ai:claude">— Search</span> <span data-proof="authored" data-by="ai:claude">`docs/solutions/`</span> <span data-proof="authored" data-by="ai:claude">for relevant patterns:</span>
 
@@ -153,8 +153,8 @@ Grep: [keywords] in docs/solutions/
 
 **<span data-proof="authored" data-by="ai:claude">Options:</span>**
 
-1. **<span data-proof="authored" data-by="ai:claude">Run</span>** **<span data-proof="authored" data-by="ai:claude">`/workflows:review`</span>** <span data-proof="authored" data-by="ai:claude">— Check strategic alignment and data accuracy</span>
-2. **<span data-proof="authored" data-by="ai:claude">Start</span>** **<span data-proof="authored" data-by="ai:claude">`/workflows:work`</span>** <span data-proof="authored" data-by="ai:claude">— Begin executing this plan</span>
+1. **<span data-proof="authored" data-by="ai:claude">Run</span>** **<span data-proof="authored" data-by="ai:claude">`/kw:review`</span>** <span data-proof="authored" data-by="ai:claude">— Check strategic alignment and data accuracy</span>
+2. **<span data-proof="authored" data-by="ai:claude">Start</span>** **<span data-proof="authored" data-by="ai:claude">`/kw:work`</span>** <span data-proof="authored" data-by="ai:claude">— Begin executing this plan</span>
 3. **<span data-proof="authored" data-by="ai:claude">Refine</span>** <span data-proof="authored" data-by="ai:claude">— Adjust specific sections</span>
 4. **<span data-proof="authored" data-by="ai:claude">Open in editor</span>** <span data-proof="authored" data-by="ai:claude">— View the full plan</span>
 

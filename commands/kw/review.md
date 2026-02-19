@@ -1,5 +1,5 @@
 ---
-name: workflows:review
+name: kw:review
 description: Multi-reviewer quality check for knowledge work. Runs strategic alignment and data accuracy reviewers on plans, briefs, and strategy docs.
 ---
 
@@ -9,7 +9,7 @@ Two automated reviewers check your work for the errors that damage credibility: 
 
 ## When to Use
 
-* After `/workflows:plan` to validate a plan before executing
+* After `/kw:plan` to validate a plan before executing
 
 * Before sharing a strategy doc, brief, or analysis with stakeholders
 
@@ -23,7 +23,7 @@ The most recently produced artifact. Determined by context:
 
 | Situation                  | What to review                                                         |
 | -------------------------- | ---------------------------------------------------------------------- |
-| `/workflows:plan` just ran | The plan file it produced                                              |
+| `/kw:plan` just ran | The plan file it produced                                              |
 | User points to a file      | That file                                                              |
 | User pastes content        | That content                                                           |
 | Ambiguous                  | Ask: "What should I review? Provide a file path or paste the content." |
@@ -153,7 +153,7 @@ Use AskUserQuestion:
 
 1. **Fix P1/P2 issues now** — Address findings inline
 2. **Re-review after fixes** — Run the review again on updated content
-3. **Run** **`/workflows:compound`** — Save review insights as learnings
+3. **Run** **`/kw:compound`** — Save review insights as learnings
 4. **Ship as-is** — Acknowledge findings and proceed
 
 ## Important Rules
