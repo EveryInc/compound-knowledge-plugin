@@ -54,15 +54,54 @@ Present the task list to the user:
 | Notion page / doc    | Create and populate                          |
 | Campaign assets      | Create copy, briefs, timelines               |
 
-### Step 3: Execute task by task
+### Step 3: Group tasks by dependency
 
-For each task:
+Before executing, sort tasks into **batches**:
 
-1. **Mark in progress** — Announce what you're working on
-2. **Do the work** — Produce the deliverable using available tools
-3. **Show the output** — Present what you made
-4. **Get feedback** — "Good? Or adjust?"
-5. **Mark complete** — Move to next task
+```
+## Execution Plan
+
+### Batch 1 (parallel) — no dependencies
+- [ ] [Task A] — independent
+- [ ] [Task B] — independent
+
+### Batch 2 (parallel) — depends on Batch 1
+- [ ] [Task C] — needs output from Task A
+- [ ] [Task D] — independent of C, but needs Batch 1 context
+
+### Batch 3 (sequential) — needs user direction
+- [ ] [Task E] — depends on user feedback from earlier batches
+```
+
+**Grouping rules:**
+
+* Tasks with no dependencies on each other go in the same batch
+
+* Tasks that need another task's output go in a later batch
+
+* Tasks that need user feedback before starting go in their own batch
+
+Present the execution plan to the user:
+
+> "I've grouped these into \[N] batches. Batch 1 has \[N] independent tasks I can run in parallel. Want to adjust before I start?"
+
+### Step 4: Execute batch by batch
+
+**For each batch:**
+
+1. **Announce the batch** — "Starting Batch 1: \[task names]"
+2. **Launch independent tasks in parallel** — Use Task agents for tasks that don't depend on each other. For single tasks or tasks requiring heavy interaction, execute inline.
+3. **Show all outputs** — Present results from the batch together
+4. **Get feedback** — "Good? Or adjust before I move to Batch 2?"
+5. **Mark complete** — Move to next batch
+
+**When to parallelize within a batch:**
+
+| Situation                                                                 | <span data-proof="authored" data-by="ai:claude">Approach</span>                       |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| 2+ independent deliverables (e.g., 3 social posts, a brief + a data pull) | <span data-proof="authored" data-by="ai:claude">Launch as parallel Task agents</span> |
+| Single deliverable                                                        | Execute inline                                                                        |
+| Deliverable needs back-and-forth (e.g., iterating on tone)                | Execute inline, don't delegate                                                        |
 
 **Execution principles:**
 
@@ -72,11 +111,11 @@ For each task:
 
 * **Show, don't describe.** Produce the actual deliverable, not a description of what it would look like.
 
-* **One task at a time.** Don't try to do everything in parallel. Knowledge work benefits from sequential focus.
+* **Approve between batches, not between every task.** Independent tasks don't need individual sign-off. Check in after each batch completes.
 
-* **Check in after each task.** The user may want to adjust direction based on what they see.
+* **Fall back to sequential if unsure.** When in doubt about whether tasks are independent, run them one at a time. Wrong parallelism is worse than no parallelism.
 
-### Step 4: Handle blockers
+### Step 5: Handle blockers
 
 If you can't complete a task:
 
@@ -88,7 +127,7 @@ If you can't complete a task:
 
 * **Quality concern** — If the output doesn't feel right, say so. "I produced this but I'm not confident about \[X]. Want to review before I continue?"
 
-### Step 5: Track what happened
+### Step 6: Track what happened
 
 As you work, maintain a running log:
 
@@ -109,7 +148,7 @@ As you work, maintain a running log:
 - **Next step:** [what needs to happen]
 ```
 
-### Step 6: Wrap up
+### Step 7: Wrap up
 
 When all tasks are complete (or blocked), summarize:
 
@@ -129,7 +168,7 @@ When all tasks are complete (or blocked), summarize:
 - [anything learned during execution worth noting]
 ```
 
-### Step 7: Offer next steps
+### Step 8: Offer next steps
 
 Use AskUserQuestion:
 
@@ -152,4 +191,4 @@ Use AskUserQuestion:
 
 * **Track everything.** The work log is how you know what happened. It also feeds `/kw:compound` with concrete results to learn from.
 
-* **Ask for feedback often.** Knowledge work is subjective. Check in after each deliverable rather than producing everything and hoping it's right.
+* **Ask for feedback between batches.** Knowledge work is subjective. Check in after each batch rather than producing everything and hoping it's right. Independent tasks within a batch don't need individual sign-off.

@@ -21,12 +21,12 @@ Two automated reviewers check your work for the errors that damage credibility: 
 
 The most recently produced artifact. Determined by context:
 
-| Situation                  | What to review                                                         |
-| -------------------------- | ---------------------------------------------------------------------- |
-| `/kw:plan` just ran | The plan file it produced                                              |
-| User points to a file      | That file                                                              |
-| User pastes content        | That content                                                           |
-| Ambiguous                  | Ask: "What should I review? Provide a file path or paste the content." |
+| Situation             | What to review                                                         |
+| --------------------- | ---------------------------------------------------------------------- |
+| `/kw:plan` just ran   | The plan file it produced                                              |
+| User points to a file | That file                                                              |
+| User pastes content   | That content                                                           |
+| Ambiguous             | Ask: "What should I review? Provide a file path or paste the content." |
 
 ## Process
 
@@ -38,74 +38,27 @@ Read the file or accept pasted content. If the content references data (metrics,
 
 * Check freshness of any data files cited
 
-### Step 2: Run Strategic Alignment Review
+### Step 2: Run both reviewers in parallel
 
-Apply this checklist to the content:
+Launch **both** reviewers simultaneously as Task agents. They are independent — neither needs the other's output.
 
-**Focus:** Does this serve the stated goals? Is the hypothesis grounded? Are we solving the right problem?
+**Launch in parallel:**
 
-**Checklist:**
+1. **Strategic Alignment Reviewer** (Task agent: `strategic-alignment-reviewer`)
 
-* [ ] Goal is explicit and connected to a measurable outcome
+   * Pass: the full content + any business context from CLAUDE.md
 
-* [ ] Hypothesis is falsifiable ("If X, then Y will change by Z")
+   * It checks: goal clarity, falsifiable hypothesis, success metrics, scope proportionality, resource awareness, strategic consistency
 
-* [ ] Success metrics are defined and measurable
+2. **Data Accuracy Reviewer** (Task agent: `data-accuracy-reviewer`)
 
-* [ ] Scope is proportional to expected impact (don't build a platform for a one-off)
+   * Pass: the full content + any data context files referenced in CLAUDE.md
 
-* [ ] No vanity metrics (impressions without conversion, engagement without attribution)
+   * It checks: source citations, comparison baselines, canonical definitions, freshness, caveats, hardcoded numbers
 
-* [ ] Resources required are stated
+**Both agents return findings in** **`[P1|P2|P3]`** **format.** Wait for both to complete before proceeding.
 
-* [ ] Consistent with stated company/team goals (check CLAUDE.md if available)
-
-**References to check:**
-
-* Business context from CLAUDE.md (if available)
-
-* Recent plans in `plans/` for consistency
-
-* `docs/knowledge/` for past strategic learnings
-
-**Output per finding:**
-
-```
-[P1|P2|P3] [Strategic]: [Description of the issue]
-  → Suggestion: [How to fix it]
-```
-
-### Step 3: Run Data Accuracy Review
-
-Apply this checklist to the content:
-
-**Focus:** Are the numbers right? Are the sources cited? Would this survive a stakeholder asking "where'd you get that?"
-
-**Checklist:**
-
-* [ ] Every number has a source (dashboard name, file, API endpoint)
-
-* [ ] Comparison baselines are explicit ("+32% vs what?" — WoW, MoM, YTD average)
-
-* [ ] Numbers match canonical definitions (if the project has a data context file)
-
-* [ ] Data is fresh — flag anything older than 48 hours as potentially stale
-
-* [ ] Known caveats are acknowledged
-
-* [ ] No hardcoded numbers that should be live-queried
-
-* [ ] Comparisons use appropriate baselines (watch for weekend/seasonal skew)
-
-**Output per finding:**
-
-```
-[P1|P2|P3] [Data]: [Description of the issue]
-  → Source should be: [correct source]
-  → Current value: [if verifiable]
-```
-
-### Step 4: Run editorial check (if external-facing)
+### Step 3: Run editorial check (if external-facing)
 
 If the content will be published, emailed, or posted publicly:
 
@@ -115,9 +68,9 @@ If the content will be published, emailed, or posted publicly:
 
 If the content is internal (plan, brief, analysis for the team): skip this step.
 
-### Step 5: Present findings
+### Step 4: Merge and present findings
 
-Group all findings by severity:
+Combine findings from both reviewers. Group all findings by severity:
 
 ```
 ## Review: [Document Title]
@@ -137,13 +90,13 @@ Group all findings by severity:
 
 **Severity definitions:**
 
-| Severity            | What qualifies                                                           | Examples                                        |
-| ------------------- | ------------------------------------------------------------------------ | ----------------------------------------------- |
-| **P1 Critical**     | Factual error, wrong data source, missing goal, unfalsifiable hypothesis | "Metric cited from wrong source"                |
-| **P2 Important**    | Missing source citation, stale data, unclear success metric              | "Conversion rate has no comparison basis"       |
-| **P3 Nice-to-have** | Minor framing, additional context, formatting                            | "Could specify the time period for this metric" |
+| <span data-proof="authored" data-by="ai:claude">Severity</span>         | What qualifies                                                                                                                  | <span data-proof="authored" data-by="ai:claude">Examples</span>                                  |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **<span data-proof="authored" data-by="ai:claude">P1 Critical</span>**  | <span data-proof="authored" data-by="ai:claude">Factual error, wrong data source, missing goal, unfalsifiable hypothesis</span> | "Metric cited from wrong source"                                                                 |
+| **<span data-proof="authored" data-by="ai:claude">P2 Important</span>** | <span data-proof="authored" data-by="ai:claude">Missing source citation, stale data, unclear success metric</span>              | <span data-proof="authored" data-by="ai:claude">"Conversion rate has no comparison basis"</span> |
+| **P3 Nice-to-have**                                                     | <span data-proof="authored" data-by="ai:claude">Minor framing, additional context, formatting</span>                            | "Could specify the time period for this metric"                                                  |
 
-### Step 6: Offer next steps
+### Step 5: Offer next steps
 
 Use AskUserQuestion:
 
