@@ -42,13 +42,13 @@ claude plugins add EveryInc/compound-knowledge-plugin
 
 ### <span data-proof="authored" data-by="ai:claude">Review</span>
 
-<span data-proof="authored" data-by="ai:claude">Two reviewers check your work:</span>
+Two reviewers check your work **in parallel**:
 
-* **<span data-proof="authored" data-by="ai:claude">Strategic Alignment</span>** <span data-proof="authored" data-by="ai:claude">— Is the goal clear? Is the hypothesis falsifiable? Are we solving the right problem?</span>
+* **Strategic Alignment** — Is the goal clear? Is the hypothesis falsifiable? Are we solving the right problem?
 
-* **<span data-proof="authored" data-by="ai:claude">Data Accuracy</span>** <span data-proof="authored" data-by="ai:claude">— Are numbers sourced? Are baselines explicit? Is data fresh?</span>
+* **Data Accuracy** — Are numbers sourced? Are baselines explicit? Is data fresh?
 
-<span data-proof="authored" data-by="ai:claude">Findings are grouped P1 (blocks shipping) / P2 (should fix) / P3 (nice to have).</span>
+Both run simultaneously as Task agents, then findings are merged and grouped P1 (blocks shipping) / P2 (should fix) / P3 (nice to have).
 
 ```
 /kw:review
@@ -56,7 +56,7 @@ claude plugins add EveryInc/compound-knowledge-plugin
 
 ### <span data-proof="authored" data-by="ai:claude">Work</span>
 
-<span data-proof="authored" data-by="ai:claude">Execute a plan. Break it into tasks, produce deliverables one at a time, track what happened.</span>
+Execute a plan. Break it into tasks, group by dependency, and run independent tasks in parallel. Dependent tasks run sequentially with approval gates between batches.
 
 ```
 /kw:work
