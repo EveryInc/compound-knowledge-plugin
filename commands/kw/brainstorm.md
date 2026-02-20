@@ -135,15 +135,41 @@ description: Brain dump and compile knowledge before structuring a plan. Use whe
 - [What needs more research]
 ```
 
-### <span data-proof="authored" data-by="ai:claude">Step 5: Suggest a direction</span>
+### Step 5: Resolve load-bearing questions
 
-<span data-proof="authored" data-by="ai:claude">Based on everything, offer a point of view:</span>
+Before moving toward a direction, take the open questions and tensions from Step 2 and Step 4 and identify which ones are **load-bearing** — meaning the plan's structure would change depending on the answer.
+
+Ignore nice-to-know questions. Focus only on ones where different answers lead to different plans. Common load-bearing questions:
+
+- **Scope:** "Is this a quick win or a multi-phase initiative?"
+- **Audience:** "Who is this for? That changes everything downstream."
+- **Priority:** "You mentioned X and Y — which matters more if we have to choose?"
+- **Timeline:** "Are we talking days, weeks, or months?"
+- **Owner:** "Who's making the final call on this?"
+- **Constraints:** "Is there a budget/resource ceiling I should plan around?"
+
+Use AskUserQuestion to ask **1-3 load-bearing questions at once** (never more than 3). Frame each question with options drawn from what surfaced in the brainstorm — don't ask open-ended questions when you already have candidate answers.
+
+Example:
+
+> **Question:** "You mentioned both 'grow trials' and 'improve conversion' — which is the primary goal?"
+> **Options:** Grow trials (top of funnel) / Improve conversion (bottom of funnel) / Both equally
+
+If all open questions are non-load-bearing (i.e., any answer leads to roughly the same plan), skip this step and say so:
+
+> "The open questions won't change the plan's shape — we can resolve them during execution."
+
+**Important:** This step is a bridge, not an interrogation. 1-3 questions max. The goal is to give `/kw:plan` clean inputs, not to turn brainstorming into a requirements gathering session.
+
+### Step 6: Suggest a direction
+
+Based on everything — including the resolved questions from Step 5 — offer a point of view:
 
 > <span data-proof="authored" data-by="ai:claude">"Based on what I'm seeing, the core question is [X]. The main tension is between [A] and [B]. My suggestion would be to [direction] because [reasoning]. But [caveat]."</span>
 
 <span data-proof="authored" data-by="ai:claude">This is a suggestion, not a decision. The user decides.</span>
 
-### <span data-proof="authored" data-by="ai:claude">Step 6: Offer next steps</span>
+### Step 7: Offer next steps
 
 <span data-proof="authored" data-by="ai:claude">Use AskUserQuestion:</span>
 
@@ -166,7 +192,7 @@ description: Brain dump and compile knowledge before structuring a plan. Use whe
 
 * **<span data-proof="authored" data-by="ai:claude">Reflect, don't rewrite.</span>** <span data-proof="authored" data-by="ai:claude">When summarizing back, use the user's language. Don't sanitize their thinking into corporate speak.</span>
 
-* **<span data-proof="authored" data-by="ai:claude">Surface tensions, don't resolve them.</span>** <span data-proof="authored" data-by="ai:claude">If two ideas conflict, name the conflict. Don't pick a winner unless asked.</span>
+* **Surface tensions early, resolve the load-bearing ones late.** Steps 2-4 are for naming conflicts without picking winners. Step 5 is for resolving only the ones that would change the plan's shape. Don't collapse tensions prematurely.
 
 * **<span data-proof="authored" data-by="ai:claude">Pull, don't push.</span>** <span data-proof="authored" data-by="ai:claude">Ask where references might live rather than guessing. The user knows their information landscape better than you do.</span>
 
