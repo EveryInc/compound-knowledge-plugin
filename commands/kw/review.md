@@ -104,10 +104,10 @@ Use AskUserQuestion:
 
 **Options:**
 
-1. **Fix P1/P2 issues now** — Address findings inline
-2. **Re-review after fixes** — Run the review again on updated content
-3. **Run** **`/kw:compound`** — Save review insights as learnings
-4. **Ship as-is** — Acknowledge findings and proceed
+1. **Fix P1/P2 issues now** — Address findings inline, then re-review
+2. **Run `/kw:work`** — Plan passes. Start executing it
+3. **Run `/kw:compound`** — Save review insights as learnings
+4. **Ship as-is** — Acknowledge findings and proceed without fixing
 
 ## Important Rules
 
