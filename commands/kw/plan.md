@@ -94,33 +94,11 @@ Grep: [keywords] in docs/solutions/
 
 ### <span data-proof="authored" data-by="ai:claude">Step 4: Structure the plan</span>
 
-<span data-proof="authored" data-by="ai:claude">Use this template. Lead with the recommendation (Pyramid Principle — answer first, then supporting logic). Fill sections based on research findings. Skip sections that aren't relevant.</span>
+Use the template that matches the work type from Step 1. Each type has a different lead section — use the right one. Fill sections based on research findings. Skip sections that aren't relevant.
 
-```markdown proof:W3sidHlwZSI6InByb29mQXV0aG9yZWQiLCJmcm9tIjowLCJ0byI6ODYyLCJhdHRycyI6eyJieSI6ImFpOmNsYXVkZSJ9fV0=
-# [Plan Title]
+**All templates share these common sections** (include at the bottom of every plan):
 
-**Type:** [Strategy | Campaign | Brief | Research | Operations]
-**Status:** Draft
-**Created:** [today's date]
-
----
-
-## Recommendation
-
-[One paragraph: what we should do and why. Lead with the answer.]
-
-## Current State
-
-[What's true right now. Data from Step 2d.]
-[Include source and date for every number.]
-
-## Proposed Approach
-
-[How to get from current state to the desired outcome.]
-[For strategies: layers or phases.]
-[For campaigns: channels, timeline, assets.]
-[For briefs: scope, deliverables, constraints.]
-
+```markdown
 ## Success Metrics
 
 | Metric | Current Baseline | Target | Source |
@@ -135,6 +113,173 @@ Grep: [keywords] in docs/solutions/
 ## References
 
 - [Related plans, knowledge entries, data sources used]
+```
+
+***
+
+**Strategy** — Pyramid Principle. Lead with the recommendation.
+
+```markdown
+# [Plan Title]
+
+**Type:** Strategy
+**Status:** Draft
+**Created:** [today's date]
+
+---
+
+## Recommendation
+
+[One paragraph: what we should do and why. Lead with the answer.]
+
+## Current State
+
+[What's true right now. Data from Step 2d. Source and date for every number.]
+
+## Proposed Approach
+
+[How to get from current state to the desired outcome. Layers or phases.]
+```
+
+***
+
+**Campaign** — Timeline-first. Lead with what launches when.
+
+```markdown
+# [Plan Title]
+
+**Type:** Campaign
+**Status:** Draft
+**Created:** [today's date]
+
+---
+
+## Timeline
+
+| Date/Week | Action | Channel | Owner |
+|-----------|--------|---------|-------|
+| [date] | [what launches] | [where] | [who] |
+
+## Goal
+
+[One paragraph: what this campaign achieves and how we'll know it worked.]
+
+## Audience
+
+[Who this targets. Segment, persona, or behavioral description.]
+
+## Assets Needed
+
+- [Copy, creative, landing pages, emails — what needs to be produced]
+
+## Current State
+
+[Relevant baselines. What are the numbers before we start?]
+```
+
+***
+
+**Brief** — Directive-first. Lead with the recommendation, then scope.
+
+```markdown
+# [Plan Title]
+
+**Type:** Brief
+**Status:** Draft
+**Created:** [today's date]
+
+---
+
+## Recommendation
+
+[One paragraph: what we should do and why. Lead with the answer.]
+
+## Scope
+
+[What's in and what's out. Be explicit about boundaries.]
+
+## Deliverables
+
+- [Concrete output 1]
+- [Concrete output 2]
+
+## Constraints
+
+[Timeline, budget, dependencies, blockers.]
+
+## Context
+
+[Background the reader needs. Data from Step 2d.]
+```
+
+***
+
+**Research** — Findings-first. Lead with what you discovered.
+
+```markdown
+# [Plan Title]
+
+**Type:** Research
+**Status:** Draft
+**Created:** [today's date]
+
+---
+
+## Key Findings
+
+1. **[Finding]** — [One sentence with data. Source and date.]
+2. **[Finding]** — [One sentence with data. Source and date.]
+3. **[Finding]** — [One sentence with data. Source and date.]
+
+## Implications
+
+[What these findings mean for the business. What should change.]
+
+## Methodology
+
+[How you gathered this data. Sources, timeframes, filters, caveats.]
+
+## Raw Data
+
+[Tables, charts, or links to dashboards that support the findings.]
+```
+
+***
+
+**Operations** — Trigger-first. Lead with when this runs and what to do.
+
+```markdown
+# [Plan Title]
+
+**Type:** Operations
+**Status:** Draft
+**Created:** [today's date]
+
+---
+
+## Trigger
+
+[When does this process run? On a schedule, on an event, on request?]
+
+## Steps
+
+1. [Step] — [details, tools, commands]
+2. [Step] — [details, tools, commands]
+3. [Step] — [details, tools, commands]
+
+## Edge Cases
+
+| Situation | What to do |
+|-----------|-----------|
+| [When X happens] | [Do Y] |
+
+## Owner
+
+[Who runs this. Who to escalate to.]
+
+## Dependencies
+
+[What this process needs to work — access, tools, data sources.]
 ```
 
 ### <span data-proof="authored" data-by="ai:claude">Step 5: Write to plans/</span>
@@ -160,7 +305,7 @@ Grep: [keywords] in docs/solutions/
 
 ## <span data-proof="authored" data-by="ai:claude">Important Rules</span>
 
-* **<span data-proof="authored" data-by="ai:claude">Lead with the answer.</span>** <span data-proof="authored" data-by="ai:claude">The Recommendation section comes first, not last. If someone only reads one paragraph, they should know what you're proposing.</span>
+* **<span data-proof="suggestion" data-id="m1771607256840_1" data-by="ai:claude" data-kind="replace"><span data-proof="authored" data-by="ai:claude">Lead with the answer.</span></span>**<span data-proof="suggestion" data-id="m1771607256840_1" data-by="ai:claude" data-kind="replace"></span> <span data-proof="suggestion" data-id="m1771607256840_1" data-by="ai:claude" data-kind="replace"><span data-proof="authored" data-by="ai:claude">The Recommendation section comes first, not last. If someone only reads one paragraph, they should know what you're proposing.</span></span>
 
 * **<span data-proof="authored" data-by="ai:claude">Cite everything.</span>** <span data-proof="authored" data-by="ai:claude">Every data point needs a source. "+32% WoW" not "+32%".</span>
 
@@ -169,3 +314,24 @@ Grep: [keywords] in docs/solutions/
 * **<span data-proof="authored" data-by="ai:claude">Don't over-template.</span>** <span data-proof="authored" data-by="ai:claude">The template is a starting point. Skip sections that don't apply. A campaign plan doesn't need an "Architecture" section.</span>
 
 * **<span data-proof="authored" data-by="ai:claude">Degrade gracefully.</span>** <span data-proof="authored" data-by="ai:claude">If a data source fails or returns nothing, proceed with what you have. Note what's missing.</span>
+
+<!-- PROOF
+{
+  "version": 2,
+  "marks": {
+    "m1771607256840_1": {
+      "kind": "replace",
+      "by": "ai:claude",
+      "createdAt": "2026-02-20T17:07:36.840Z",
+      "range": {
+        "from": 6585,
+        "to": 6733
+      },
+      "content": "Lead with what the reader needs first. Strategy/Brief: the recommendation. Campaign: the timeline. Research: the findings. Operations: the trigger and steps. If someone only reads the first section, they should get the most important thing.",
+      "status": "pending"
+    }
+  }
+}
+-->
+
+<!-- PROOF:END -->
