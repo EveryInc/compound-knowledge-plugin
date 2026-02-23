@@ -4,8 +4,15 @@ AI-powered workflows for knowledge work: brainstorm, plan, review, execute, and 
 
 ## Install
 
-```bash
-claude plugins add EveryInc/compound-knowledge-plugin
+Inside a [Claude Code](https://claude.ai/claude-code) session, run:
+
+```
+/plugin marketplace add EveryInc/compound-knowledge-plugin
+/plugin install compound-knowledge@compound-knowledge-marketplace
 ```
 
-See [plugin documentation](plugins/compound-knowledge/README.md) for usage details.
+Then restart Claude Code to load the plugin.
+
+## Usage
+
+See the [plugin documentation](plugins/compound-knowledge/README.md) for full details on the 5 workflows and 2 review agents.

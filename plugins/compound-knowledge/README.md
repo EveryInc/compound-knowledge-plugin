@@ -1,8 +1,8 @@
-# <span data-proof="authored" data-by="ai:claude">Compound Knowledge</span>
+# Compound Knowledge
 
-<span data-proof="authored" data-by="ai:claude">AI-powered workflows for knowledge work: brainstorm, plan, review, execute, and save learnings. The knowledge work equivalent of</span> [<span data-proof="authored" data-by="ai:claude">Compound Engineering</span>](https://github.com/EveryInc/compound-engineering-plugin)<span data-proof="authored" data-by="ai:claude">.</span>
+AI-powered workflows for knowledge work: brainstorm, plan, review, execute, and save learnings. The knowledge work equivalent of [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin).
 
-## <span data-proof="authored" data-by="ai:claude">The Loop</span>
+## The Loop
 
 ```
 /kw:brainstorm  →  Brain dump, pull references, find the shape
@@ -12,35 +12,38 @@
 /kw:compound    →  Save learnings for next time
 ```
 
-<span data-proof="authored" data-by="ai:claude">Each cycle makes the next one faster.</span> <span data-proof="authored" data-by="ai:claude">`/kw:plan`</span> <span data-proof="authored" data-by="ai:claude">searches</span> <span data-proof="authored" data-by="ai:claude">`docs/knowledge/`</span> <span data-proof="authored" data-by="ai:claude">for past learnings saved by</span> <span data-proof="authored" data-by="ai:claude">`/kw:compound`. Knowledge compounds.</span>
+Each cycle makes the next one faster. `/kw:plan` searches `docs/knowledge/` for past learnings saved by `/kw:compound`. Knowledge compounds.
 
-## <span data-proof="authored" data-by="ai:claude">Install</span>
+## Install
 
-<span data-proof="authored" data-by="ai:claude">Add to your Claude Code plugins:</span>
+Inside a [Claude Code](https://claude.ai/claude-code) session, run:
 
-```bash proof:W3sidHlwZSI6InByb29mQXV0aG9yZWQiLCJmcm9tIjowLCJ0byI6NTMsImF0dHJzIjp7ImJ5IjoiYWk6Y2xhdWRlIn19XQ==
-claude plugins add EveryInc/compound-knowledge-plugin
+```
+/plugin marketplace add EveryInc/compound-knowledge-plugin
+/plugin install compound-knowledge@compound-knowledge-marketplace
 ```
 
-## <span data-proof="authored" data-by="ai:claude">Workflows</span>
+Then restart Claude Code to load the plugin.
 
-### <span data-proof="authored" data-by="ai:claude">Brainstorm</span>
+## Workflows
 
-<span data-proof="authored" data-by="ai:claude">Start here. Paste a meeting transcript, brain dump raw thoughts, or describe a problem. The agent extracts key decisions, open questions, constraints, and tensions — then pulls in references from your project.</span>
+### Brainstorm
+
+Start here. Paste a meeting transcript, brain dump raw thoughts, or describe a problem. The agent extracts key decisions, open questions, constraints, and tensions — then pulls in references from your project.
 
 ```
 /kw:brainstorm
 ```
 
-### <span data-proof="authored" data-by="ai:claude">Plan</span>
+### Plan
 
-<span data-proof="authored" data-by="ai:claude">Structure a brainstorm into an actionable plan. Searches past plans, knowledge base, and external sources. Outputs a Pyramid Principle plan (lead with the answer).</span>
+Structure a brainstorm into an actionable plan. Searches past plans, knowledge base, and external sources. Outputs a Pyramid Principle plan (lead with the answer).
 
 ```
 /kw:plan
 ```
 
-### <span data-proof="authored" data-by="ai:claude">Review</span>
+### Review
 
 Two reviewers check your work **in parallel**:
 
@@ -54,7 +57,7 @@ Both run simultaneously as Task agents, then findings are merged and grouped P1 
 /kw:review
 ```
 
-### <span data-proof="authored" data-by="ai:claude">Work</span>
+### Work
 
 Execute a plan. Break it into tasks, group by dependency, and run independent tasks in parallel. Dependent tasks run sequentially with approval gates between batches.
 
@@ -62,45 +65,45 @@ Execute a plan. Break it into tasks, group by dependency, and run independent ta
 /kw:work
 ```
 
-### <span data-proof="authored" data-by="ai:claude">Compound</span>
+### Compound
 
-<span data-proof="authored" data-by="ai:claude">Extract 1-3 learnings from a session and save them to</span> <span data-proof="authored" data-by="ai:claude">`docs/knowledge/`. These get surfaced automatically next time</span> <span data-proof="authored" data-by="ai:claude">`/kw:plan`</span> <span data-proof="authored" data-by="ai:claude">runs on a related topic.</span>
+Extract 1-3 learnings from a session and save them to `docs/knowledge/`. These get surfaced automatically next time `/kw:plan` runs on a related topic.
 
 ```
 /kw:compound
 ```
 
-## <span data-proof="authored" data-by="ai:claude">How It Works</span>
+## How It Works
 
-<span data-proof="authored" data-by="ai:claude">The compounding loop:</span>
+The compounding loop:
 
-1. <span data-proof="authored" data-by="ai:claude">You brainstorm and plan something</span>
-2. <span data-proof="authored" data-by="ai:claude">`/kw:plan`</span> <span data-proof="authored" data-by="ai:claude">searches</span> <span data-proof="authored" data-by="ai:claude">`docs/knowledge/`</span> <span data-proof="authored" data-by="ai:claude">— finds past insights</span>
-3. <span data-proof="authored" data-by="ai:claude">You execute and review</span>
-4. <span data-proof="authored" data-by="ai:claude">`/kw:compound`</span> <span data-proof="authored" data-by="ai:claude">saves what you learned to</span> <span data-proof="authored" data-by="ai:claude">`docs/knowledge/`</span>
-5. <span data-proof="authored" data-by="ai:claude">Next time you plan something related, step 2 finds it</span>
+1. You brainstorm and plan something
+2. `/kw:plan` searches `docs/knowledge/` — finds past insights
+3. You execute and review
+4. `/kw:compound` saves what you learned to `docs/knowledge/`
+5. Next time you plan something related, step 2 finds it
 
-<span data-proof="authored" data-by="ai:claude">No configuration needed. Works with any project that has a</span> <span data-proof="authored" data-by="ai:claude">`plans/`</span> <span data-proof="authored" data-by="ai:claude">directory.</span>
+No configuration needed. Works with any project that has a `plans/` directory.
 
-## <span data-proof="authored" data-by="ai:claude">Customization</span>
+## Customization
 
-<span data-proof="authored" data-by="ai:claude">The plugin reads your project's</span> <span data-proof="authored" data-by="ai:claude">`CLAUDE.md`</span> <span data-proof="authored" data-by="ai:claude">for:</span>
+The plugin reads your project's `CLAUDE.md` for:
 
-* <span data-proof="authored" data-by="ai:claude">Business context and goals (used by the strategic alignment reviewer)</span>
+* Business context and goals (used by the strategic alignment reviewer)
 
-* <span data-proof="authored" data-by="ai:claude">Data source hierarchy (used by the data accuracy reviewer)</span>
+* Data source hierarchy (used by the data accuracy reviewer)
 
-* <span data-proof="authored" data-by="ai:claude">Style guides and conventions (used during execution)</span>
+* Style guides and conventions (used during execution)
 
-<span data-proof="authored" data-by="ai:claude">If your project doesn't have a</span> <span data-proof="authored" data-by="ai:claude">`CLAUDE.md`, the workflows still work — they just won't have project-specific context.</span>
+If your project doesn't have a `CLAUDE.md`, the workflows still work — they just won't have project-specific context.
 
-## <span data-proof="authored" data-by="ai:claude">Components</span>
+## Components
 
-| <span data-proof="authored" data-by="ai:claude">Type</span>          | <span data-proof="authored" data-by="ai:claude">Count</span> | <span data-proof="authored" data-by="ai:claude">Description</span>                              |
-| -------------------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| <span data-proof="authored" data-by="ai:claude">Workflows</span>     | <span data-proof="authored" data-by="ai:claude">5</span>     | <span data-proof="authored" data-by="ai:claude">brainstorm, plan, review, work, compound</span> |
-| <span data-proof="authored" data-by="ai:claude">Review Agents</span> | <span data-proof="authored" data-by="ai:claude">2</span>     | <span data-proof="authored" data-by="ai:claude">strategic-alignment, data-accuracy</span>       |
+| Type          | Count | Description                              |
+| ------------- | ----- | ---------------------------------------- |
+| Workflows     | 5     | brainstorm, plan, review, work, compound |
+| Review Agents | 2     | strategic-alignment, data-accuracy       |
 
-## <span data-proof="authored" data-by="ai:claude">License</span>
+## License
 
-<span data-proof="authored" data-by="ai:claude">MIT</span>
+MIT
