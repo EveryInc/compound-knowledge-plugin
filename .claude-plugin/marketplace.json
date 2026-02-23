@@ -1,0 +1,26 @@
+{
+  "name": "compound-knowledge-marketplace",
+  "owner": {
+    "name": "Every Inc.",
+    "url": "https://github.com/EveryInc"
+  },
+  "metadata": {
+    "description": "AI-powered workflows for knowledge work: brainstorm, plan, review, execute, and save learnings.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "compound-knowledge",
+      "description": "Compound knowledge work: brainstorm, plan, review, execute, and save learnings. 5 workflows, 2 review agents for strategy docs, campaign plans, briefs, and any non-code knowledge work.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Austin Tedesco",
+        "url": "https://every.to",
+        "email": "austin@every.to"
+      },
+      "homepage": "https://github.com/EveryInc/compound-knowledge-plugin",
+      "tags": ["knowledge-work", "compound-knowledge", "brainstorm", "planning", "review"],
+      "source": "./plugins/compound-knowledge"
+    }
+  ]
+}
