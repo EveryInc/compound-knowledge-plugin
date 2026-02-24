@@ -4,6 +4,12 @@
 
 <span data-proof="authored" data-by="ai:claude">The format is based on</span> [<span data-proof="authored" data-by="ai:claude">Keep a Changelog</span>](https://keepachangelog.com/en/1.0.0/)<span data-proof="authored" data-by="ai:claude">.</span>
 
+## [0.2.0] - 2026-02-23
+
+### Added
+
+* `/kw:confidence` — Gut-check what you know and don't know before proceeding. Plain-language confidence assessment with actionable steps to resolve gaps.
+
 ## <span data-proof="authored" data-by="ai:claude">[0.1.0] - 2026-02-19</span>
 
 ### <span data-proof="authored" data-by="ai:claude">Added</span>

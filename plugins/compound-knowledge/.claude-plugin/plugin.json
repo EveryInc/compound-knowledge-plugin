@@ -1,7 +1,7 @@
 {
   "name": "compound-knowledge",
-  "version": "0.1.0",
-  "description": "Compound knowledge work: brainstorm, plan, review, execute, and save learnings. 5 workflows, 2 review agents for strategy docs, campaign plans, briefs, and any non-code knowledge work.",
+  "version": "0.2.0",
+  "description": "Compound knowledge work: brainstorm, plan, review, execute, and save learnings. 6 workflows, 2 review agents for strategy docs, campaign plans, briefs, and any non-code knowledge work.",
   "author": {
     "name": "Austin Tedesco",
     "email": "austin@every.to",

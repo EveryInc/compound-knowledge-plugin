@@ -5,11 +5,12 @@ AI-powered workflows for knowledge work: brainstorm, plan, review, execute, and 
 ## The Loop
 
 ```
-/kw:brainstorm  →  Brain dump, pull references, find the shape
-/kw:plan        →  Structure into an actionable plan
-/kw:review      →  Strategic alignment + data accuracy check
-/kw:work        →  Execute the plan, produce deliverables
-/kw:compound    →  Save learnings for next time
+/kw:brainstorm   →  Brain dump, pull references, find the shape
+/kw:plan         →  Structure into an actionable plan
+/kw:confidence   →  Gut-check what you know vs. don't (callable at any point)
+/kw:review       →  Strategic alignment + data accuracy check
+/kw:work         →  Execute the plan, produce deliverables
+/kw:compound     →  Save learnings for next time
 ```
 
 Each cycle makes the next one faster. `/kw:plan` searches `docs/knowledge/` for past learnings saved by `/kw:compound`. Knowledge compounds.
@@ -41,6 +42,14 @@ Structure a brainstorm into an actionable plan. Searches past plans, knowledge b
 
 ```
 /kw:plan
+```
+
+### Confidence
+
+Callable at any point in the loop. Pauses to honestly assess what Claude knows and doesn't know — in plain language, not a table. Produces a "confident about / less confident about / my recommendation" breakdown, then offers to show specific actions that would increase confidence.
+
+```
+/kw:confidence
 ```
 
 ### Review
@@ -101,7 +110,7 @@ If your project doesn't have a `CLAUDE.md`, the workflows still work — they ju
 
 | Type          | Count | Description                              |
 | ------------- | ----- | ---------------------------------------- |
-| Workflows     | 5     | brainstorm, plan, review, work, compound |
+| Workflows     | 6     | brainstorm, plan, confidence, review, work, compound |
 | Review Agents | 2     | strategic-alignment, data-accuracy       |
 
 ## License
