@@ -1,6 +1,6 @@
 # Compound Knowledge
 
-AI-powered workflows for knowledge work: brainstorm, plan, review, execute, and save learnings. The knowledge work equivalent of [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin).
+Workflows for knowledge work that compounds over time. The knowledge work equivalent of [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin).
 
 ## The Loop
 
