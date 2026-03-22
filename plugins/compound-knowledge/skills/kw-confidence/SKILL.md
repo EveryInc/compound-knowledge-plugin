@@ -145,3 +145,13 @@ Then continue where you left off. The confidence check is a non-destructive inte
 * **Keep it proportional.** High confidence = 2 sentences. Mixed confidence = a few short paragraphs. Never a wall of text.
 
 * **This is not `/kw:review`.** Confidence assesses what *you* know and don't know — your epistemic state. Review assesses whether a *finished artifact* is good enough. They're complementary, not alternatives.
+
+## Pipeline Mode
+
+When invoked with `disable-model-invocation` context (e.g., from an orchestrator or automation):
+
+- Skip all AskUserQuestion prompts
+- Use sensible defaults for all choices
+- Write output files without waiting for confirmation
+- Proceed to the next suggested skill automatically
+- Output structured results that the calling context can parse

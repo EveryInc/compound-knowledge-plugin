@@ -1,13 +1,23 @@
 {
   "name": "compound-knowledge",
-  "version": "0.2.0",
-  "description": "Compound knowledge work: brainstorm, plan, review, execute, and save learnings. 6 workflows, 2 review agents for strategy docs, campaign plans, briefs, and any non-code knowledge work.",
+  "version": "1.0.0",
+  "description": "Knowledge compounds. Brainstorm, plan, review, execute, and save what you learn — so the next cycle starts smarter. 6 skills, 5 agents.",
   "author": {
     "name": "Austin Tedesco",
     "email": "austin@every.to",
     "url": "https://every.to"
   },
-  "homepage": "https://github.com/EveryInc/compound-knowledge-plugin",
+  "homepage": "https://every.to/p/how-to-build-a-command-center-that-keeps-you-sane",
   "repository": "https://github.com/EveryInc/compound-knowledge-plugin",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "knowledge-work",
+    "planning",
+    "review",
+    "compounding",
+    "brainstorm",
+    "strategy",
+    "campaign",
+    "brief"
+  ]
 }

@@ -1,8 +1,32 @@
-# <span data-proof="authored" data-by="ai:claude">Changelog</span>
+# Changelog
 
-<span data-proof="authored" data-by="ai:claude">All notable changes to this project will be documented in this file.</span>
+All notable changes to this project will be documented in this file.
 
-<span data-proof="authored" data-by="ai:claude">The format is based on</span> [<span data-proof="authored" data-by="ai:claude">Keep a Changelog</span>](https://keepachangelog.com/en/1.0.0/)<span data-proof="authored" data-by="ai:claude">.</span>
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+## [1.0.0] - 2026-03-22
+
+### Added
+
+* 3 research agents: past-work-researcher, knowledge-base-researcher, stale-knowledge-checker
+* Parallel research agent architecture in `/kw:plan` — launches agents instead of inline grep
+* Auto-search in `/kw:brainstorm` — knowledge base and past plans searched automatically
+* Stale knowledge detection in `/kw:compound` — flags contradictions before saving
+* Origin document chain — brainstorms become origin docs that plans reference and cross-check
+* Detail tiers in `/kw:plan` — Quick, Standard, Deep based on scope signals
+* Execution log persistence in `/kw:work` — appends to plan file, not just conversation
+* Proof integration — "Push to Proof" offered at all handoff points
+* Pipeline mode for all 6 skills — supports autonomous chaining
+* PRIVACY.md and SECURITY.md
+
+### Changed
+
+* Migrated from `commands/kw/` to `skills/kw-*/SKILL.md` structure
+* Added `$ARGUMENTS` capture and `argument-hint` frontmatter to skills
+* Review agents now referenced by fully-qualified names
+* Updated "Lead with the answer" rule to be work-type-specific
+* CLAUDE.md is now a shim to AGENTS.md (matching compound-engineering convention)
+* README split: root is landing page, plugin README is full reference
 
 ## [0.2.0] - 2026-02-23
 
@@ -10,22 +34,22 @@
 
 * `/kw:confidence` — Gut-check what you know and don't know before proceeding. Plain-language confidence assessment with actionable steps to resolve gaps.
 
-## <span data-proof="authored" data-by="ai:claude">[0.1.0] - 2026-02-19</span>
+## [0.1.0] - 2026-02-19
 
-### <span data-proof="authored" data-by="ai:claude">Added</span>
+### Added
 
-* <span data-proof="authored" data-by="ai:claude">`/kw:brainstorm`</span> <span data-proof="authored" data-by="ai:claude">— Brain dump and compile knowledge before planning</span>
+* `/kw:brainstorm` — Brain dump and compile knowledge before planning
 
-* <span data-proof="authored" data-by="ai:claude">`/kw:plan`</span> <span data-proof="authored" data-by="ai:claude">— Research past work and structure actionable plans</span>
+* `/kw:plan` — Research past work and structure actionable plans
 
-* <span data-proof="authored" data-by="ai:claude">`/kw:review`</span> <span data-proof="authored" data-by="ai:claude">— Strategic alignment + data accuracy review (P1/P2/P3)</span>
+* `/kw:review` — Strategic alignment + data accuracy review (P1/P2/P3)
 
-* <span data-proof="authored" data-by="ai:claude">`/kw:work`</span> <span data-proof="authored" data-by="ai:claude">— Execute plans with task tracking</span>
+* `/kw:work` — Execute plans with task tracking
 
-* <span data-proof="authored" data-by="ai:claude">`/kw:compound`</span> <span data-proof="authored" data-by="ai:claude">— Save learnings to</span> <span data-proof="authored" data-by="ai:claude">`docs/knowledge/`</span>
+* `/kw:compound` — Save learnings to `docs/knowledge/`
 
-* <span data-proof="authored" data-by="ai:claude">Strategic alignment reviewer agent</span>
+* Strategic alignment reviewer agent
 
-* <span data-proof="authored" data-by="ai:claude">Data accuracy reviewer agent</span>
+* Data accuracy reviewer agent
 
-* <span data-proof="authored" data-by="ai:claude">README with install and usage instructions</span>
+* README with install and usage instructions

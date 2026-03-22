@@ -1,25 +1,25 @@
 {
-  "name": "compound-knowledge-marketplace",
+  "name": "compound-knowledge-plugin",
   "owner": {
-    "name": "Every Inc.",
-    "url": "https://github.com/EveryInc"
+    "name": "Every",
+    "url": "https://every.to"
   },
   "metadata": {
-    "description": "AI-powered workflows for knowledge work: brainstorm, plan, review, execute, and save learnings.",
+    "description": "AI-powered workflows for knowledge work that compounds over time",
     "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "compound-knowledge",
-      "description": "Compound knowledge work: brainstorm, plan, review, execute, and save learnings. 5 workflows, 2 review agents for strategy docs, campaign plans, briefs, and any non-code knowledge work.",
-      "version": "0.1.0",
+      "description": "Knowledge compounds. Brainstorm, plan, review, execute, and save what you learn — so the next cycle starts smarter.",
+      "version": "1.0.0",
       "author": {
         "name": "Austin Tedesco",
         "url": "https://every.to",
         "email": "austin@every.to"
       },
-      "homepage": "https://github.com/EveryInc/compound-knowledge-plugin",
-      "tags": ["knowledge-work", "compound-knowledge", "brainstorm", "planning", "review"],
+      "homepage": "https://every.to/p/how-to-build-a-command-center-that-keeps-you-sane",
+      "tags": ["knowledge-work", "planning", "review", "compounding", "brainstorm"],
       "source": "./plugins/compound-knowledge"
     }
   ]

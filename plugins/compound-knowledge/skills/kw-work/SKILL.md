@@ -1,7 +1,10 @@
 ---
 name: kw:work
 description: Execute a knowledge work plan. Break it into tasks, do the work, and track what happened. Use after planning to actually produce the deliverables.
+argument-hint: "[plan file to execute]"
 ---
+
+<work_target> #$ARGUMENTS </work_target>
 
 # Work
 
@@ -97,9 +100,9 @@ Present the execution plan to the user:
 
 **When to parallelize within a batch:**
 
-| Situation                                                                 | <span data-proof="authored" data-by="ai:claude">Approach</span>                       |
+| Situation                                                                 | Approach                       |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 2+ independent deliverables (e.g., 3 social posts, a brief + a data pull) | <span data-proof="authored" data-by="ai:claude">Launch as parallel Task agents</span> |
+| 2+ independent deliverables (e.g., 3 social posts, a brief + a data pull) | Launch as parallel Task agents |
 | Single deliverable                                                        | Execute inline                                                                        |
 | Deliverable needs back-and-forth (e.g., iterating on tone)                | Execute inline, don't delegate                                                        |
 
@@ -129,24 +132,24 @@ If you can't complete a task:
 
 ### Step 6: Track what happened
 
-As you work, maintain a running log:
+As you work, maintain a running log. After each batch completes, **append the log to the plan file** under a `## Execution Log` section:
 
 ```
-## Work Log
+## Execution Log
 
-### [Task 1] ✅
-- **Produced:** [what was created]
-- **Location:** [file path or link]
-- **Notes:** [anything notable — decisions made, things discovered]
+### [timestamp] Batch 1: [batch name]
+- [Task 1] ✅ — Produced: [what], Location: [path]
+- [Task 2] ✅ — Produced: [what], Location: [path]
+- Notes: [anything notable]
 
-### [Task 2] ✅
-- **Produced:** [what was created]
-- **Location:** [file path or link]
-
-### [Task 3] ⏳ Blocked
-- **Blocker:** [what's preventing completion]
-- **Next step:** [what needs to happen]
+### [timestamp] Batch 2: [batch name]
+- [Task 3] ✅ — Produced: [what], Location: [path]
+- [Task 4] ⏳ Blocked — [blocker], Next step: [what needs to happen]
 ```
+
+<critical_requirement>
+Write the execution log to the plan file after each batch. Do not keep it only in conversation. This log feeds /kw:compound with concrete material to extract learnings from.
+</critical_requirement>
 
 ### Step 7: Wrap up
 
@@ -176,10 +179,11 @@ Use AskUserQuestion:
 
 **Options:**
 
-1. **Run** **`/kw:review`** — Quality check the outputs
-2. **Run** **`/kw:compound`** — Save learnings from this session
-3. **Continue working** — Pick up blocked tasks or add new ones
-4. **Ship it** — Done, move on
+1. **Run `/kw:review`** — Quality check the outputs
+2. **Run `/kw:compound`** — Save learnings from this session
+3. **Push to Proof** — Share execution summary for review
+4. **Continue working** — Pick up blocked tasks or add new ones
+5. **Ship it** — Done, move on
 
 ## Important Rules
 
@@ -192,3 +196,13 @@ Use AskUserQuestion:
 * **Track everything.** The work log is how you know what happened. It also feeds `/kw:compound` with concrete results to learn from.
 
 * **Ask for feedback between batches.** Knowledge work is subjective. Check in after each batch rather than producing everything and hoping it's right. Independent tasks within a batch don't need individual sign-off.
+
+## Pipeline Mode
+
+When invoked with `disable-model-invocation` context (e.g., from an orchestrator or automation):
+
+- Skip all AskUserQuestion prompts
+- Use sensible defaults for all choices
+- Write output files without waiting for confirmation
+- Proceed to the next suggested skill automatically
+- Output structured results that the calling context can parse
