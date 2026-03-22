@@ -2,8 +2,6 @@
 
 AI-powered workflows for knowledge work: brainstorm, plan, review, execute, and save learnings. The knowledge work equivalent of [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin).
 
-Read the story: [How to Build a Command Center That Keeps You Sane](https://every.to/p/how-to-build-a-command-center-that-keeps-you-sane)
-
 ## Install
 
 Inside a [Claude Code](https://claude.ai/claude-code) session:
