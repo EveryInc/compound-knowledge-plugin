@@ -46,6 +46,12 @@ After any meaningful session, save what you learned:
 
 Next time you brainstorm or plan something related, those learnings surface automatically.
 
+To learn a topic at the depth you need:
+
+```
+/teach quantum computing as a five-minute gist
+```
+
 ## Workflows
 
 ### Brainstorm
@@ -76,6 +82,10 @@ Execute a plan. Break it into tasks, group by dependency, run independent tasks 
 ### Compound
 
 Extract 1-3 learnings from a session. Checks for stale knowledge that the new learning contradicts. Saves to `docs/knowledge/` with searchable YAML frontmatter.
+
+### Teach
+
+Learn any topic as a five-minute gist, an expert briefing, or a full curriculum. The skill starts with the learner's goal, sets clear constraints, and builds the explanation at the requested depth.
 
 ## How It Works
 
@@ -109,7 +119,7 @@ delay revenue recognition. Net positive after 60 days.
 
 | Type | Count | Description |
 |------|-------|-------------|
-| Skills | 6 | brainstorm, plan, confidence, review, work, compound |
+| Skills | 7 | brainstorm, plan, confidence, review, work, compound, teach |
 | Review Agents | 2 | strategic-alignment, data-accuracy |
 | Research Agents | 3 | past-work-researcher, knowledge-base-researcher, stale-knowledge-checker |
 

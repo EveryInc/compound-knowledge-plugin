@@ -1,0 +1,7 @@
+interface:
+  display_name: "Teach"
+  short_description: "Constraint-driven teaching at three depths"
+  default_prompt: "Use $teach to teach me a topic with the right depth: gist, briefing, or curriculum."
+
+policy:
+  allow_implicit_invocation: true

@@ -6,13 +6,14 @@
 compound-knowledge/
 ├── AGENTS.md                        # Dev conventions (this file)
 ├── CLAUDE.md                        # Shim → @AGENTS.md
-├── skills/                          # 6 workflow skills
+├── skills/                          # 7 workflow skills
 │   ├── kw-brainstorm/SKILL.md
 │   ├── kw-plan/SKILL.md
 │   ├── kw-confidence/SKILL.md
 │   ├── kw-review/SKILL.md
 │   ├── kw-work/SKILL.md
-│   └── kw-compound/SKILL.md
+│   ├── kw-compound/SKILL.md
+│   └── teach/SKILL.md
 ├── agents/                          # 5 task agents
 │   ├── review/
 │   │   ├── strategic-alignment-reviewer.md
@@ -34,7 +35,7 @@ compound-knowledge/
 
 * Each skill has YAML frontmatter with `name:`, `description:`, and optionally `argument-hint:`
 
-* Skills use `kw:` prefix (e.g., `/kw:brainstorm`)
+* Workflow skills use the `kw:` prefix (e.g., `/kw:brainstorm`); standalone skills may use their own name (e.g., `/teach`)
 
 * Skills that accept arguments include an XML capture tag after frontmatter (e.g., `<brain_dump> #$ARGUMENTS </brain_dump>`)
 
@@ -58,4 +59,4 @@ Every change must update:
 
 * **Local first.** `docs/knowledge/` is the primary knowledge store. External integrations (Notion, etc.) are optional and project-specific.
 
-* **Progressive disclosure.** Start with the 6 workflows. Add skills and agents as patterns emerge.
+* **Progressive disclosure.** Start with the core workflows and add standalone skills and agents as patterns emerge.

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2026-08-07
+
+### Added
+
+* `/teach` — Teach any topic as a five-minute gist, an expert briefing, or a full curriculum
+
 ## [1.0.0] - 2026-03-22
 
 ### Added
