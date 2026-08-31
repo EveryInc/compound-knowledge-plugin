@@ -10,6 +10,12 @@ argument-hint: "[plan file to execute]"
 
 You have a plan. Now execute it. Break it into tasks, do them, track what happened.
 
+## Stage Orientation
+
+* On the first response of this skill, open with: **Stage: Work**
+* This is execution — produce deliverables, do not rewrite the whole plan
+* When batches finish, say **Execution complete** before the handoff menu
+
 ## When to Use
 
 * After `/kw:plan` or `/kw:review` — the plan is ready, time to execute
@@ -171,19 +177,32 @@ When all tasks are complete (or blocked), summarize:
 - [anything learned during execution worth noting]
 ```
 
-### Step 8: Offer next steps
+### Step 8: Handoff — never skip
 
-Use AskUserQuestion:
+```
+**Execution complete.**
 
-**Question:** "Execution complete. \[N] deliverables produced. What next?"
+Plan: [plan name]
+Deliverables: [N] produced
+
+What would you like to do next?
+```
+
+Use AskUserQuestion when available; otherwise a numbered list in chat. **Never silently skip this question.**
 
 **Options:**
 
-1. **Run `/kw:review`** — Quality check the outputs
-2. **Run `/kw:compound`** — Save learnings from this session
+1. **Run `/kw:compound`** *(recommended)* — Save learnings from this session so the next cycle starts smarter
+2. **Run `/kw:review`** — Quality check the outputs
 3. **Push to Proof** — Share execution summary for review
 4. **Continue working** — Pick up blocked tasks or add new ones
-5. **Ship it** — Done, move on
+5. **Ship it** — Done for now; skip compounding (not recommended after meaningful work)
+
+#### Handle the selected option
+
+* **Run `/kw:compound`:** Immediately load `kw:compound`, pointing at this session's plan + execution log.
+* **Run `/kw:review`:** Immediately load `kw:review` on the primary deliverable or plan.
+* **Continue working:** Return to Step 4 for remaining/blocked work, then return to this menu.
 
 ## Important Rules
 

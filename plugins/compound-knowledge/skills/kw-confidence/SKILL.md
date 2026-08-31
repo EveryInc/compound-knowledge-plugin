@@ -7,6 +7,11 @@ description: Gut-check what you know and don't know before proceeding. Use at an
 
 Pause and honestly say what you're confident about and what you're not — like a colleague would. Then decide whether to proceed or dig deeper.
 
+## Stage Orientation
+
+* On the first response, open with: **Stage: Confidence** (interrupt — does not replace the parent stage)
+* After the check, explicitly re-anchor: e.g. "Resuming **Stage: Work**" or "Return to **Stage: Plan** handoff"
+
 ## When to Use
 
 * Before committing to a plan or starting execution

@@ -7,6 +7,11 @@ description: Extract and save learnings from a completed knowledge work session.
 
 Close the loop. Extract what you learned and save it where future work will find it.
 
+## Stage Orientation
+
+* On the first response of this skill, open with: **Stage: Compound**
+* When learnings are saved (or none are worth saving), say **Loop closed** before the final menu
+
 ## When to Use
 
 * After completing a plan, campaign, analysis, or strategy session
@@ -129,26 +134,32 @@ source: [brief description of what triggered this]
 [How this should change future work. Be concrete: "When doing X, always check Y first."]
 ```
 
-### Step 5: Confirm and offer next steps
+### Step 5: Confirm and handoff
 
 ```
-## Compounded
+**Loop closed.**
 
 **Saved:**
-- docs/knowledge/{filename}.md
+- docs/knowledge/{filename}.md   # or "Nothing new to save"
 
-**This learning will be surfaced by /kw:plan** when future work touches:
+**These learnings will be surfaced by /kw:plan** when future work touches:
 - [list the tags that would trigger retrieval]
 ```
 
-Use AskUserQuestion:
+Use AskUserQuestion when available; otherwise a numbered list in chat. **Never silently skip this question.**
 
 **Question:** "Learnings saved. What next?"
 
 **Options:**
-1. **Run `/kw:plan`** — Start a new planning cycle (the learnings will be found)
+
+1. **Run `/kw:brainstorm` or `/kw:plan`** — Start a new cycle (learnings will be found)
 2. **Push to Proof** — Share the learnings for team review
 3. **Done** — Session complete
+
+#### Handle the selected option
+
+* **New cycle:** Immediately load `kw:brainstorm` or `kw:plan` as the user prefers (default to plan if they name a concrete next topic).
+* **Done:** End with a one-line reminder that knowledge is in `docs/knowledge/`.
 
 ## Important Rules
 
