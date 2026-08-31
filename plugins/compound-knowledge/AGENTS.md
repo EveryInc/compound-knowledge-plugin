@@ -6,13 +6,14 @@
 compound-knowledge/
 ├── AGENTS.md                        # Dev conventions (this file)
 ├── CLAUDE.md                        # Shim → @AGENTS.md
-├── skills/                          # 6 workflow skills
+├── skills/                          # 7 workflow skills
 │   ├── kw-brainstorm/SKILL.md
 │   ├── kw-plan/SKILL.md
 │   ├── kw-confidence/SKILL.md
 │   ├── kw-review/SKILL.md
 │   ├── kw-work/SKILL.md
-│   └── kw-compound/SKILL.md
+│   ├── kw-compound/SKILL.md
+│   └── kw-lfg/SKILL.md              # Hands-off loop (plan → review → work → compound)
 ├── agents/                          # 5 task agents
 │   ├── review/
 │   │   ├── strategic-alignment-reviewer.md
@@ -38,6 +39,12 @@ compound-knowledge/
 
 * Skills that accept arguments include an XML capture tag after frontmatter (e.g., `<brain_dump> #$ARGUMENTS </brain_dump>`)
 
+* End-of-stage handoffs must (1) name the completed stage, (2) present next options, and (3) immediately load the chosen next skill when applicable — never silently skip the handoff
+
+* Handoff menus: Claude Code `AskUserQuestion` max 4 options — if more are visible, use a numbered list in chat instead of overloading the tool
+
+* `/kw:lfg` is the only skill that chains stages without check-ins; it invokes children with `mode:pipeline`. Other skills stay single-stage unless the user picks a handoff option; under `mode:pipeline` they return results to the caller and do not self-chain
+
 * Review agents live in `agents/review/`
 
 * Research agents live in `agents/research/`
@@ -58,4 +65,6 @@ Every change must update:
 
 * **Local first.** `docs/knowledge/` is the primary knowledge store. External integrations (Notion, etc.) are optional and project-specific.
 
-* **Progressive disclosure.** Start with the 6 workflows. Add skills and agents as patterns emerge.
+* **Progressive disclosure.** Start with the core workflows. Add skills and agents as patterns emerge. `/kw:lfg` is the autonomous path for users who already trust the loop.
+
+* **Stage clarity.** Users should always know whether they are in brainstorm, plan, review, work, or compound.

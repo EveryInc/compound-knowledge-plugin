@@ -10,6 +10,12 @@ argument-hint: "[plan file to execute]"
 
 You have a plan. Now execute it. Break it into tasks, do them, track what happened.
 
+## Stage Orientation
+
+* On the first response of this skill, open with: **Stage: Work**
+* This is execution — produce deliverables, do not rewrite the whole plan
+* When batches finish, say **Execution complete** before the handoff menu
+
 ## When to Use
 
 * After `/kw:plan` or `/kw:review` — the plan is ready, time to execute
@@ -42,6 +48,8 @@ Extract concrete deliverables from the plan. For each deliverable, create a task
 Present the task list to the user:
 
 > "I see \[N] deliverables in this plan. Here's how I'd break them down. Want to adjust before I start?"
+
+**In `mode:pipeline`:** present the task list in narration and continue — do not wait for adjustment.
 
 **Task types in knowledge work:**
 
@@ -95,7 +103,7 @@ Present the execution plan to the user:
 1. **Announce the batch** — "Starting Batch 1: \[task names]"
 2. **Launch independent tasks in parallel** — Use Task agents for tasks that don't depend on each other. For single tasks or tasks requiring heavy interaction, execute inline.
 3. **Show all outputs** — Present results from the batch together
-4. **Get feedback** — "Good? Or adjust before I move to Batch 2?"
+4. **Get feedback** — "Good? Or adjust before I move to Batch 2?" (**Skip in `mode:pipeline`** — log results and continue to the next batch.)
 5. **Mark complete** — Move to next batch
 
 **When to parallelize within a batch:**
@@ -171,19 +179,38 @@ When all tasks are complete (or blocked), summarize:
 - [anything learned during execution worth noting]
 ```
 
-### Step 8: Offer next steps
+### Step 8: Handoff — never skip
 
-Use AskUserQuestion:
+```
+**Execution complete.**
 
-**Question:** "Execution complete. \[N] deliverables produced. What next?"
+Plan: [plan name]
+Deliverables: [N] produced
+
+What would you like to do next?
+```
+
+**Handoff rendering (required):** Claude Code `AskUserQuestion` supports at most **4** options.
+
+* If visible count ≤ 4 **and** AskUserQuestion is available → use AskUserQuestion
+* If visible count > 4, or AskUserQuestion is unavailable / errors → numbered list in chat with "Pick a number or describe what you want."
+* **Never** call AskUserQuestion with more than 4 options. **Never** silently skip this question.
 
 **Options:**
 
-1. **Run `/kw:review`** — Quality check the outputs
-2. **Run `/kw:compound`** — Save learnings from this session
-3. **Push to Proof** — Share execution summary for review
-4. **Continue working** — Pick up blocked tasks or add new ones
-5. **Ship it** — Done, move on
+1. **Run `/kw:compound`** *(recommended)* — Save learnings from this session so the next cycle starts smarter
+2. **Run `/kw:review`** — Quality check the outputs
+3. **Continue working** — Pick up blocked tasks or add new ones
+4. **Done for now** — End without compounding (not recommended after meaningful work)
+5. **Push to Proof** — Share execution summary for review, then re-present this menu
+
+#### Handle the selected option
+
+* **Run `/kw:compound`:** Immediately load `kw:compound`, pointing at this session's plan + execution log.
+* **Run `/kw:review`:** Immediately load `kw:review` on the primary deliverable or plan.
+* **Continue working:** Return to Step 4 for remaining/blocked work, then return to this menu.
+* **Done for now:** End the turn; note that `/kw:compound` can still run later on this plan's execution log.
+* **Push to Proof:** Share, then re-present this menu.
 
 ## Important Rules
 
@@ -199,10 +226,10 @@ Use AskUserQuestion:
 
 ## Pipeline Mode
 
-When invoked with `disable-model-invocation` context (e.g., from an orchestrator or automation):
+When invoked with `mode:pipeline` in arguments (or equivalent pipeline/orchestrator context):
 
-- Skip all AskUserQuestion prompts
+- Skip all AskUserQuestion prompts and interactive waits (including "wait for the user to react" / batch approvals)
 - Use sensible defaults for all choices
 - Write output files without waiting for confirmation
-- Proceed to the next suggested skill automatically
-- Output structured results that the calling context can parse
+- **Do not** load the next skill yourself — return structured results to the caller (e.g. `/kw:lfg`) which owns progression
+- Output structured results the calling context can parse

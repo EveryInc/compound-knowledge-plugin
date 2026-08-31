@@ -10,6 +10,15 @@ argument-hint: "[topic, brain dump, or meeting notes]"
 
 Get everything out of your head and into one place. Pull in references. Find the shape of the problem before you commit to a plan.
 
+## Stage Orientation
+
+Stay oriented in the loop. Do not silently morph into planning or execution.
+
+* On the first response of this skill, open with: **Stage: Brainstorm**
+* Keep responses clearly inside brainstorm until Step 7 completes
+* Never start `/kw:plan`, `/kw:work`, or writing a full plan unless the user picks that next step (or `/kw:lfg`)
+* When Step 7 runs, say **Brainstorm complete** before the menu — never skip the handoff
+
 ## When to Use
 
 * After a meeting where next steps need to be figured out
@@ -172,27 +181,52 @@ Based on everything — including the resolved questions from Step 5 — offer a
 
 This is a suggestion, not a decision. The user decides.
 
-### Step 7: Offer next steps
+### Step 7: Handoff — never skip
 
-Use AskUserQuestion:
+Brainstorm is done when Steps 1–6 are complete. **Do not keep chatting inside brainstorm without a handoff.** Present the next-step menu every time.
 
-**Question:** "Brainstorm captured. What next?"
+Preamble (always show first):
 
-**Options:**
+```
+**Brainstorm complete.**
 
-1. **Run `/kw:plan`** — Structure this into an actionable plan
-2. **Dig deeper** — Research a specific theme or question further
-3. **Push to Proof** — Share the brainstorm for team feedback
-4. **Save and continue later** — Write to `plans/brainstorm-{descriptive-name}.md`
-5. **Keep going** — Add more context or refine the themes
+Origin doc: <absolute-or-workspace path to plans/brainstorm-{descriptive-name}.md>   # after write; omit if not yet saved
+
+What would you like to do next?
+```
+
+**Handoff rendering (required):** Claude Code `AskUserQuestion` supports at most **4** options. Count the visible options below for the current state:
+
+* If visible count ≤ 4 **and** AskUserQuestion is available → use AskUserQuestion
+* If visible count > 4, or AskUserQuestion is unavailable / errors → render a numbered list in chat with "Pick a number or describe what you want."
+* **Never** call AskUserQuestion with more than 4 options. **Never** silently skip this question.
+
+**Options** (renumber contiguous when any are hidden):
+
+1. **Create the plan** *(recommended)* — Hand off to `/kw:plan` and structure this into an actionable plan
+2. **Ship the rest with `/kw:lfg`** — Hands-off from here: plan → review → work → compound (no stage check-ins). Shown only when Step 5 resolved load-bearing questions (or none were load-bearing). If load-bearing items remain open, hide this option and tell the user to resolve them or pick Create the plan.
+3. **Dig deeper** — Research a specific theme or question further, then return to this menu (re-print **Stage: Brainstorm**)
+4. **Save and continue later** — Write the origin doc and stop
+5. **Keep going** — Add more context or refine themes, then return to this menu
+6. **Push to Proof** — Share the brainstorm for team feedback, then re-present this menu
 
 <critical_requirement>
-If "Save" or "Run /kw:plan" is selected: ALWAYS write the brainstorm to `plans/brainstorm-{descriptive-name}.md` first. This file becomes the origin document that `/kw:plan` will search for. Never skip the file write.
+If option 1, 2, or 4 is selected: ALWAYS write the brainstorm to `plans/brainstorm-{descriptive-name}.md` first. This file becomes the origin document that `/kw:plan` and `/kw:lfg` use. Never skip the file write.
 </critical_requirement>
+
+#### Handle the selected option
+
+* **Create the plan:** After writing the origin doc, immediately load the `kw:plan` skill in this session, passing the brainstorm path. Do not wait for the user to type `/kw:plan`.
+* **Ship the rest with `/kw:lfg`:** After writing the origin doc, immediately load the `kw:lfg` skill with that path. Do not ask which stage to run next — LFG owns the rest of the loop.
+* **Dig deeper / Keep going:** Continue brainstorm dialogue (keep **Stage: Brainstorm**), then return to this Step 7 menu when ready. Do not jump to planning or write plan-shaped outlines.
+* **Save and continue later:** Write the origin doc, show the path, and end the turn with a one-line next step (`/kw:plan` or `/kw:lfg` when they return).
+* **Push to Proof:** Share, then re-present this menu.
 
 ## Important Rules
 
 * **Don't jump to solutions.** The point of brainstorming is to understand the problem space before committing to a path. Resist the urge to plan.
+
+* **Handoff is mandatory.** Ending brainstorm without Step 7 leaves the user lost about whether they are still brainstorming or already planning. Always present the menu.
 
 * **Reflect, don't rewrite.** When summarizing back, use the user's language. Don't sanitize their thinking into corporate speak.
 
@@ -204,10 +238,10 @@ If "Save" or "Run /kw:plan" is selected: ALWAYS write the brainstorm to `plans/b
 
 ## Pipeline Mode
 
-When invoked with `disable-model-invocation` context (e.g., from an orchestrator or automation):
+When invoked with `mode:pipeline` in arguments (or equivalent pipeline/orchestrator context):
 
-- Skip all AskUserQuestion prompts
+- Skip all AskUserQuestion prompts and interactive waits
 - Use sensible defaults for all choices
 - Write output files without waiting for confirmation
-- Proceed to the next suggested skill automatically
-- Output structured results that the calling context can parse
+- **Do not** load the next skill yourself — return structured results to the caller (e.g. `/kw:lfg`) which owns progression
+- Output structured results the calling context can parse (origin path, themes, open questions)

@@ -7,6 +7,12 @@ description: Gut-check what you know and don't know before proceeding. Use at an
 
 Pause and honestly say what you're confident about and what you're not — like a colleague would. Then decide whether to proceed or dig deeper.
 
+## Stage Orientation
+
+* On entry, capture the parent stage/skill/step if one is active, then open with: **Stage: Confidence** (interrupt — does not replace the parent stage). Example: "Interrupting **Stage: Work** (Batch 2)."
+* After the check, on **Proceed**, must re-anchor with the captured parent banner (e.g. "Resuming **Stage: Work**") and continue that skill — do not restart it.
+* Offering `/kw:plan` mid-interrupt leaves the parent stage; say so explicitly before loading it.
+
 ## When to Use
 
 * Before committing to a plan or starting execution
@@ -148,10 +154,10 @@ Then continue where you left off. The confidence check is a non-destructive inte
 
 ## Pipeline Mode
 
-When invoked with `disable-model-invocation` context (e.g., from an orchestrator or automation):
+When invoked with `mode:pipeline` in arguments (or equivalent pipeline/orchestrator context):
 
-- Skip all AskUserQuestion prompts
+- Skip all AskUserQuestion prompts and interactive waits (including "wait for the user to react" / batch approvals)
 - Use sensible defaults for all choices
 - Write output files without waiting for confirmation
-- Proceed to the next suggested skill automatically
-- Output structured results that the calling context can parse
+- **Do not** load the next skill yourself — return structured results to the caller (e.g. `/kw:lfg`) which owns progression
+- Output structured results the calling context can parse

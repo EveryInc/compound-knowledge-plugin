@@ -7,6 +7,11 @@ description: Extract and save learnings from a completed knowledge work session.
 
 Close the loop. Extract what you learned and save it where future work will find it.
 
+## Stage Orientation
+
+* On the first response of this skill, open with: **Stage: Compound**
+* When learnings are saved (or none are worth saving), say **Loop closed** before the final menu
+
 ## When to Use
 
 * After completing a plan, campaign, analysis, or strategy session
@@ -58,7 +63,7 @@ Show each learning with its classification. User can:
 
 * Add learnings you missed
 
-**Do not save anything without approval.**
+**Do not save anything without approval** in interactive mode. **In `mode:pipeline`:** skip the approval prompt; auto-approve 1–3 high-signal learnings after duplicate + stale checks (still skip weak/noisy candidates).
 
 ### Step 3: Check for duplicates
 
@@ -129,32 +134,45 @@ source: [brief description of what triggered this]
 [How this should change future work. Be concrete: "When doing X, always check Y first."]
 ```
 
-### Step 5: Confirm and offer next steps
+### Step 5: Confirm and handoff
 
 ```
-## Compounded
+**Loop closed.**
 
 **Saved:**
-- docs/knowledge/{filename}.md
+- docs/knowledge/{filename}.md   # or "Nothing new to save"
 
-**This learning will be surfaced by /kw:plan** when future work touches:
+**These learnings will be surfaced by /kw:plan** when future work touches:
 - [list the tags that would trigger retrieval]
 ```
 
-Use AskUserQuestion:
+**Handoff rendering (required):** Claude Code `AskUserQuestion` supports at most **4** options.
+
+* If visible count ≤ 4 **and** AskUserQuestion is available → use AskUserQuestion
+* If visible count > 4, or AskUserQuestion is unavailable / errors → numbered list in chat with "Pick a number or describe what you want."
+* **Never** call AskUserQuestion with more than 4 options. **Never** silently skip this question.
 
 **Question:** "Learnings saved. What next?"
 
 **Options:**
-1. **Run `/kw:plan`** — Start a new planning cycle (the learnings will be found)
-2. **Push to Proof** — Share the learnings for team review
+
+1. **Run `/kw:plan`** — Start a new planning cycle (learnings will be found)
+2. **Run `/kw:brainstorm`** — Start a fresh brainstorm
 3. **Done** — Session complete
+4. **Push to Proof** — Share the learnings for team review, then re-present this menu
+
+#### Handle the selected option
+
+* **Run `/kw:plan`:** Immediately load `kw:plan`.
+* **Run `/kw:brainstorm`:** Immediately load `kw:brainstorm`.
+* **Done:** End with a one-line reminder that knowledge is in `docs/knowledge/`.
+* **Push to Proof:** Share, then re-present this menu.
 
 ## Important Rules
 
 * **1-3 learnings max per session.** If you're saving 5 things, you're not filtering enough.
 
-* **Approval required.** Never auto-save. The user decides what's worth remembering.
+* **Approval required (interactive).** Never auto-save when a user is in the loop. **Pipeline exception:** when invoked with `mode:pipeline` (e.g. from `/kw:lfg`), auto-save after duplicate + stale checks per Pipeline Mode — quality filter still applies (1–3 max).
 
 * **Be specific.** "Use the right data source" is useless. "Revenue metrics come from [specific dashboard], not [other source] which overcounts by ~$X" is useful.
 
@@ -166,10 +184,10 @@ Use AskUserQuestion:
 
 ## Pipeline Mode
 
-When invoked with `disable-model-invocation` context (e.g., from an orchestrator or automation):
+When invoked with `mode:pipeline` in arguments (or equivalent pipeline/orchestrator context):
 
-- Skip all AskUserQuestion prompts
+- Skip all AskUserQuestion prompts and interactive waits (including "wait for the user to react" / batch approvals)
 - Use sensible defaults for all choices
 - Write output files without waiting for confirmation
-- Proceed to the next suggested skill automatically
-- Output structured results that the calling context can parse
+- **Do not** load the next skill yourself — return structured results to the caller (e.g. `/kw:lfg`) which owns progression
+- Output structured results the calling context can parse

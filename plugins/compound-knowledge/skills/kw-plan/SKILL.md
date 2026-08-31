@@ -10,6 +10,13 @@ argument-hint: "[what to plan]"
 
 Research what you already know, then structure a plan grounded in data and past learnings. Lead with the answer.
 
+## Stage Orientation
+
+* On the first response of this skill, open with: **Stage: Plan**
+* Stay in planning until Step 6 — do not start executing deliverables here
+* When the plan file is written, say **Plan complete** before the handoff menu
+* If the user wants hands-off execution of the rest of the loop, offer `/kw:lfg` rather than silently chaining
+
 ## When to Use
 
 * After brainstorming, when you're ready to commit to a direction
@@ -94,7 +101,7 @@ Before writing anything, present a context brief:
 **No prior context found** (if searches returned nothing)
 ```
 
-Wait for the user to react. They may refine direction, add context, or say "looks good, go."
+Wait for the user to react. They may refine direction, add context, or say "looks good, go." **Skip this wait entirely in `mode:pipeline`** — present the brief in narration and continue to Step 4.
 
 ### Step 4: Structure the plan
 
@@ -294,19 +301,39 @@ Use the template that matches the work type from Step 1. Each type has a differe
 
 * Always write the file BEFORE presenting options.
 
-### Step 6: Offer next steps
+### Step 6: Handoff — never skip
 
-Use AskUserQuestion:
+```
+**Plan complete.**
 
-**Question:** "Plan written to `plans/{filename}`. What next?"
+Plan: <absolute-or-workspace path to plans/{filename}>
+
+What would you like to do next?
+```
+
+**Handoff rendering (required):** Claude Code `AskUserQuestion` supports at most **4** options.
+
+* If visible count ≤ 4 **and** AskUserQuestion is available → use AskUserQuestion
+* If visible count > 4, or AskUserQuestion is unavailable / errors → numbered list in chat with "Pick a number or describe what you want."
+* **Never** call AskUserQuestion with more than 4 options. **Never** silently skip this question.
 
 **Options:**
 
-1. **Run `/kw:review`** — Check strategic alignment and data accuracy
+1. **Run `/kw:review`** *(recommended)* — Check strategic alignment and data accuracy before executing
 2. **Start `/kw:work`** — Begin executing this plan
-3. **Push to Proof** — Share the plan for collaborative review
-4. **Refine** — Adjust specific sections
-5. **Open in editor** — View the full plan
+3. **Ship the rest with `/kw:lfg`** — Hands-off from here: review → work → compound (skips re-planning; uses this plan)
+4. **Refine** — Adjust specific sections, then return to this menu
+5. **Push to Proof** — Share the plan for collaborative review, then re-present this menu
+6. **Open in editor** — Show the plan path for local viewing, then re-present this menu
+
+#### Handle the selected option
+
+* **Run `/kw:review`:** Immediately load `kw:review` with the plan path.
+* **Start `/kw:work`:** Immediately load `kw:work` with the plan path.
+* **Ship the rest with `/kw:lfg`:** Immediately load `kw:lfg` with `plan:<path>` (or the plan file path) so it starts at review — does not re-run plan.
+* **Refine:** Edit the plan, then re-present this menu.
+* **Push to Proof:** Share, then re-present this menu.
+* **Open in editor:** Display the plan path (open via host primitive if available), then re-present this menu.
 
 ## Important Rules
 
@@ -322,10 +349,10 @@ Use AskUserQuestion:
 
 ## Pipeline Mode
 
-When invoked with `disable-model-invocation` context (e.g., from an orchestrator or automation):
+When invoked with `mode:pipeline` in arguments (or equivalent pipeline/orchestrator context):
 
-- Skip all AskUserQuestion prompts
+- Skip all AskUserQuestion prompts and interactive waits (including "wait for the user to react" / batch approvals)
 - Use sensible defaults for all choices
 - Write output files without waiting for confirmation
-- Proceed to the next suggested skill automatically
-- Output structured results that the calling context can parse
+- **Do not** load the next skill yourself — return structured results to the caller (e.g. `/kw:lfg`) which owns progression
+- Output structured results the calling context can parse
