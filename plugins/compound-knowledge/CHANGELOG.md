@@ -17,7 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * `/kw:brainstorm` Step 7 reframed as an explicit "Brainstorm complete" handoff (never skip), aligned with CE's post-brainstorm progression
 * `/kw:plan`, `/kw:review`, `/kw:work`, and `/kw:compound` handoffs strengthened with stage-complete preambles and immediate skill load on selection
-* `/kw:confidence` re-anchors to the interrupted parent stage after the check
+* Handoff menus follow CE's AskUserQuestion cap: ≤4 options use the tool; more than 4 fall back to a numbered list (never call AskUserQuestion over the limit)
+* Pipeline Mode now keys off `mode:pipeline` (not `disable-model-invocation`); children return results to the caller instead of self-chaining
+* `/kw:compound` allows pipeline auto-save so `/kw:lfg` does not contradict "approval required"
+* LFG option labeled **Ship the rest**; existing `plans/*.md` paths skip re-planning; work end option renamed **Done for now**
+* `/kw:confidence` captures and resumes the interrupted parent stage
 * README / component counts updated for 7 skills
 
 ## [1.0.0] - 2026-03-22

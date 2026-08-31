@@ -41,7 +41,9 @@ compound-knowledge/
 
 * End-of-stage handoffs must (1) name the completed stage, (2) present next options, and (3) immediately load the chosen next skill when applicable — never silently skip the handoff
 
-* `/kw:lfg` is the only skill that chains stages without check-ins; other skills stay single-stage unless the user picks a handoff option
+* Handoff menus: Claude Code `AskUserQuestion` max 4 options — if more are visible, use a numbered list in chat instead of overloading the tool
+
+* `/kw:lfg` is the only skill that chains stages without check-ins; it invokes children with `mode:pipeline`. Other skills stay single-stage unless the user picks a handoff option; under `mode:pipeline` they return results to the caller and do not self-chain
 
 * Review agents live in `agents/review/`
 

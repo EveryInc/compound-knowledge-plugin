@@ -17,7 +17,7 @@ Workflows for knowledge work that compounds over time. The knowledge work equiva
 
 Each cycle makes the next one faster. `/kw:plan` searches `docs/knowledge/` for past learnings saved by `/kw:compound`. Knowledge compounds.
 
-After `/kw:brainstorm`, the skill ends with an explicit handoff (create plan, or ship the rest with `/kw:lfg`) so you always know which stage you're in.
+After `/kw:brainstorm`, the skill ends with an explicit handoff (create plan, or **Ship the rest** with `/kw:lfg`) so you always know which stage you're in.
 
 ## Install
 

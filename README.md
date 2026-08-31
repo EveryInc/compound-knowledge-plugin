@@ -19,7 +19,7 @@ Read the story: [How to Build a Command Center That Keeps You Sane](https://ever
 
 Each cycle makes the next one faster. `/kw:plan` searches `docs/knowledge/` for past learnings saved by `/kw:compound`. Knowledge compounds.
 
-After `/kw:brainstorm`, you get an explicit handoff — create a plan, or ship the rest of the loop with `/kw:lfg` — so you don't lose track of which stage you're in.
+After `/kw:brainstorm`, you get an explicit handoff — create a plan, or **Ship the rest** with `/kw:lfg` — so you don't lose track of which stage you're in.
 
 ## Install
 
