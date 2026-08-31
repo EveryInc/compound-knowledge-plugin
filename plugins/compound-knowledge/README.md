@@ -11,9 +11,13 @@ Workflows for knowledge work that compounds over time. The knowledge work equiva
 /kw:review       -->  Strategic alignment + data accuracy check
 /kw:work         -->  Execute the plan, produce deliverables
 /kw:compound     -->  Save learnings for next time
+
+/kw:lfg          -->  Hands-off: plan → review → work → compound (no stage check-ins)
 ```
 
 Each cycle makes the next one faster. `/kw:plan` searches `docs/knowledge/` for past learnings saved by `/kw:compound`. Knowledge compounds.
+
+After `/kw:brainstorm`, the skill ends with an explicit handoff (create plan, or ship the rest with `/kw:lfg`) so you always know which stage you're in.
 
 ## Install
 
@@ -36,6 +40,12 @@ When you're ready to commit to a direction:
 
 ```
 /kw:plan
+```
+
+Or hand off the rest of the loop with no check-ins between stages:
+
+```
+/kw:lfg
 ```
 
 After any meaningful session, save what you learned:
@@ -77,6 +87,10 @@ Execute a plan. Break it into tasks, group by dependency, run independent tasks 
 
 Extract 1-3 learnings from a session. Checks for stale knowledge that the new learning contradicts. Saves to `docs/knowledge/` with searchable YAML frontmatter.
 
+### LFG
+
+Hands-off runner for the rest of the loop — the knowledge-work counterpart to Compound Engineering's `/lfg`. Invokes plan → review → work → compound without asking which stage is next. Enter from a brainstorm origin doc, a topic, or `plan:<path>` to skip re-planning. Stops on unresolved P1 review findings. Ends at deliverables + compounded knowledge (no PR/CI shipping).
+
 ## How It Works
 
 1. You brainstorm and plan something
@@ -109,7 +123,7 @@ delay revenue recognition. Net positive after 60 days.
 
 | Type | Count | Description |
 |------|-------|-------------|
-| Skills | 6 | brainstorm, plan, confidence, review, work, compound |
+| Skills | 7 | brainstorm, plan, confidence, review, work, compound, lfg |
 | Review Agents | 2 | strategic-alignment, data-accuracy |
 | Research Agents | 3 | past-work-researcher, knowledge-base-researcher, stale-knowledge-checker |
 

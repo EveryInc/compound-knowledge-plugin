@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2026-08-31
+
+### Added
+
+* `/kw:lfg` — Hands-off loop runner (plan → review → work → compound), the knowledge-work counterpart to Compound Engineering's `/lfg`
+* Stage orientation banners on all workflow skills (`**Stage: …**`) so mid-conversation it stays clear which phase you're in
+* Mandatory end-of-stage handoff menus that recommend the next skill and, when chosen, immediately load it (instead of only suggesting the user type the command)
+* Brainstorm / plan handoff option: **Ship the loop with `/kw:lfg`**
+
+### Changed
+
+* `/kw:brainstorm` Step 7 reframed as an explicit "Brainstorm complete" handoff (never skip), aligned with CE's post-brainstorm progression
+* `/kw:plan`, `/kw:review`, `/kw:work`, and `/kw:compound` handoffs strengthened with stage-complete preambles and immediate skill load on selection
+* `/kw:confidence` re-anchors to the interrupted parent stage after the check
+* README / component counts updated for 7 skills
+
 ## [1.0.0] - 2026-03-22
 
 ### Added

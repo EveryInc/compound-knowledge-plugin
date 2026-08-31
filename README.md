@@ -13,9 +13,13 @@ Read the story: [How to Build a Command Center That Keeps You Sane](https://ever
 /kw:review       -->  Strategic alignment + data accuracy check
 /kw:work         -->  Execute the plan, produce deliverables
 /kw:compound     -->  Save learnings for next time
+
+/kw:lfg          -->  Hands-off: plan → review → work → compound (no stage check-ins)
 ```
 
 Each cycle makes the next one faster. `/kw:plan` searches `docs/knowledge/` for past learnings saved by `/kw:compound`. Knowledge compounds.
+
+After `/kw:brainstorm`, you get an explicit handoff — create a plan, or ship the rest of the loop with `/kw:lfg` — so you don't lose track of which stage you're in.
 
 ## Install
 
@@ -38,6 +42,12 @@ When you're ready to commit to a direction:
 
 ```
 /kw:plan
+```
+
+Or run the rest of the loop hands-off (plan → review → work → compound):
+
+```
+/kw:lfg
 ```
 
 After any meaningful session, save what you learned:
@@ -79,6 +89,10 @@ Execute a plan. Break it into tasks, group by dependency, run independent tasks 
 
 Extract 1-3 learnings from a session. Checks for stale knowledge that the new learning contradicts. Saves to `docs/knowledge/` with searchable YAML frontmatter.
 
+### LFG
+
+Hands-off runner for the rest of the loop — knowledge-work counterpart to Compound Engineering's `/lfg`. Runs plan → review → work → compound without asking which stage is next.
+
 ## How It Works
 
 1. You brainstorm and plan something
@@ -111,7 +125,7 @@ delay revenue recognition. Net positive after 60 days.
 
 | Type | Count | Description |
 |------|-------|-------------|
-| Skills | 6 | brainstorm, plan, confidence, review, work, compound |
+| Skills | 7 | brainstorm, plan, confidence, review, work, compound, lfg |
 | Review Agents | 2 | strategic-alignment, data-accuracy |
 | Research Agents | 3 | past-work-researcher, knowledge-base-researcher, stale-knowledge-checker |
 
