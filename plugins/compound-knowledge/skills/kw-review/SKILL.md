@@ -10,6 +10,12 @@ argument-hint: "[file path or content to review]"
 
 Two automated reviewers check your work for the errors that damage credibility: wrong strategy and wrong data.
 
+## Stage Orientation
+
+* On the first response of this skill, open with: **Stage: Review**
+* Stay in review until findings are presented and the handoff runs
+* When done, say **Review complete** before the next-step menu
+
 ## When to Use
 
 * After `/kw:plan` to validate a plan before executing
@@ -95,19 +101,32 @@ Combine findings from both reviewers. Group all findings by severity:
 | **P2 Important** | Missing source citation, stale data, unclear success metric              | "Conversion rate has no comparison basis" |
 | **P3 Nice-to-have**                                                     | Minor framing, additional context, formatting                            | "Could specify the time period for this metric"                                                  |
 
-### Step 5: Offer next steps
+### Step 5: Handoff — never skip
 
-Use AskUserQuestion:
+```
+**Review complete.**
 
-**Question:** "Review complete. \[N] findings (\[P1 count] critical, \[P2 count] important). What next?"
+Findings: [N] ([P1 count] critical, [P2 count] important, [P3 count] nice-to-have)
+
+What would you like to do next?
+```
+
+Use AskUserQuestion when available; otherwise a numbered list in chat. **Never silently skip this question.**
 
 **Options:**
 
 1. **Fix P1/P2 issues now** — Address findings inline, then re-review
-2. **Run `/kw:work`** — Plan passes. Start executing it
+2. **Run `/kw:work`** *(recommended when no P1s)* — Plan passes. Start executing it
 3. **Run `/kw:compound`** — Save review insights as learnings
 4. **Push to Proof** — Share review findings for discussion
 5. **Ship as-is** — Acknowledge findings and proceed without fixing
+
+#### Handle the selected option
+
+* **Fix P1/P2:** Apply fixes to the artifact, then re-run review (return to Step 2).
+* **Run `/kw:work`:** Immediately load `kw:work` with the reviewed plan/artifact path.
+* **Run `/kw:compound`:** Immediately load `kw:compound`.
+* If P1 findings remain, recommend fixing before work — still allow the user to override.
 
 ## Important Rules
 

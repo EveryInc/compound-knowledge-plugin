@@ -10,6 +10,13 @@ argument-hint: "[what to plan]"
 
 Research what you already know, then structure a plan grounded in data and past learnings. Lead with the answer.
 
+## Stage Orientation
+
+* On the first response of this skill, open with: **Stage: Plan**
+* Stay in planning until Step 6 — do not start executing deliverables here
+* When the plan file is written, say **Plan complete** before the handoff menu
+* If the user wants hands-off execution of the rest of the loop, offer `/kw:lfg` rather than silently chaining
+
 ## When to Use
 
 * After brainstorming, when you're ready to commit to a direction
@@ -294,19 +301,33 @@ Use the template that matches the work type from Step 1. Each type has a differe
 
 * Always write the file BEFORE presenting options.
 
-### Step 6: Offer next steps
+### Step 6: Handoff — never skip
 
-Use AskUserQuestion:
+```
+**Plan complete.**
 
-**Question:** "Plan written to `plans/{filename}`. What next?"
+Plan: plans/{filename}
+
+What would you like to do next?
+```
+
+Use AskUserQuestion when available; otherwise a numbered list in chat. **Never silently skip this question.**
 
 **Options:**
 
-1. **Run `/kw:review`** — Check strategic alignment and data accuracy
+1. **Run `/kw:review`** *(recommended)* — Check strategic alignment and data accuracy before executing
 2. **Start `/kw:work`** — Begin executing this plan
-3. **Push to Proof** — Share the plan for collaborative review
-4. **Refine** — Adjust specific sections
-5. **Open in editor** — View the full plan
+3. **Ship the rest with `/kw:lfg`** — Hands-off from here: review → work → compound (skips re-planning; uses this plan)
+4. **Push to Proof** — Share the plan for collaborative review
+5. **Refine** — Adjust specific sections, then return to this menu
+6. **Open in editor** — View the full plan
+
+#### Handle the selected option
+
+* **Run `/kw:review`:** Immediately load `kw:review` with the plan path.
+* **Start `/kw:work`:** Immediately load `kw:work` with the plan path.
+* **Ship the rest with `/kw:lfg`:** Immediately load `kw:lfg` with `plan:<path>` so it starts at review (does not re-run plan).
+* **Refine:** Edit the plan, then re-present this menu.
 
 ## Important Rules
 
