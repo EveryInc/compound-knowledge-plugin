@@ -111,21 +111,27 @@ Findings: [N] ([P1 count] critical, [P2 count] important, [P3 count] nice-to-hav
 What would you like to do next?
 ```
 
-Use AskUserQuestion when available; otherwise a numbered list in chat. **Never silently skip this question.**
+**Handoff rendering (required):** Claude Code `AskUserQuestion` supports at most **4** options.
+
+* If visible count ≤ 4 **and** AskUserQuestion is available → use AskUserQuestion
+* If visible count > 4, or AskUserQuestion is unavailable / errors → numbered list in chat with "Pick a number or describe what you want."
+* **Never** call AskUserQuestion with more than 4 options. **Never** silently skip this question.
 
 **Options:**
 
 1. **Fix P1/P2 issues now** — Address findings inline, then re-review
 2. **Run `/kw:work`** *(recommended when no P1s)* — Plan passes. Start executing it
 3. **Run `/kw:compound`** — Save review insights as learnings
-4. **Push to Proof** — Share review findings for discussion
-5. **Ship as-is** — Acknowledge findings and proceed without fixing
+4. **Ship as-is** — Acknowledge findings and load `/kw:work` without fixing
+5. **Push to Proof** — Share review findings for discussion, then re-present this menu
 
 #### Handle the selected option
 
 * **Fix P1/P2:** Apply fixes to the artifact, then re-run review (return to Step 2).
 * **Run `/kw:work`:** Immediately load `kw:work` with the reviewed plan/artifact path.
 * **Run `/kw:compound`:** Immediately load `kw:compound`.
+* **Ship as-is:** Acknowledge remaining findings in one line, then immediately load `kw:work` with the plan path (same as work; note any remaining P1 override).
+* **Push to Proof:** Share, then re-present this menu.
 * If P1 findings remain, recommend fixing before work — still allow the user to override.
 
 ## Important Rules
@@ -142,10 +148,10 @@ Use AskUserQuestion when available; otherwise a numbered list in chat. **Never s
 
 ## Pipeline Mode
 
-When invoked with `disable-model-invocation` context (e.g., from an orchestrator or automation):
+When invoked with `mode:pipeline` in arguments (or equivalent pipeline/orchestrator context):
 
-- Skip all AskUserQuestion prompts
+- Skip all AskUserQuestion prompts and interactive waits (including "wait for the user to react" / batch approvals)
 - Use sensible defaults for all choices
 - Write output files without waiting for confirmation
-- Proceed to the next suggested skill automatically
-- Output structured results that the calling context can parse
+- **Do not** load the next skill yourself — return structured results to the caller (e.g. `/kw:lfg`) which owns progression
+- Output structured results the calling context can parse
